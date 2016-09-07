@@ -64,9 +64,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IFtpClient\FtpClient.Contract.csproj">
+    <ProjectReference Include="..\IFtpClient\FtpDownloader.Contract.csproj">
       <Project>{5320d49d-88e0-4e78-a5c5-3cb8665ebc82}</Project>
-      <Name>FtpClient.Contract</Name>
+      <Name>FtpDownloader.Contract</Name>
     </ProjectReference>
     <ProjectReference Include="..\Settings.Contracts\Settings.Contracts.csproj">
       <Project>{1da7514b-8860-449b-9853-f2ff0e970e58}</Project>

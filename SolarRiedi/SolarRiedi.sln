@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Startup", "Startup\Startup.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessFtp", "DataAccessFtp", "{A4FF6D0A-0B75-44CE-90E5-896C89A6DCA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpClient.Contract", "IFtpClient\FtpClient.Contract.csproj", "{5320D49D-88E0-4E78-A5C5-3CB8665EBC82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpDownloader.Contract", "IFtpClient\FtpDownloader.Contract.csproj", "{5320D49D-88E0-4E78-A5C5-3CB8665EBC82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpClient", "FtpClient\FtpClient.csproj", "{F1F8D1E3-32DE-4DF7-8138-38262EF436F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpDownloader", "FtpClient\FtpDownloader.csproj", "{F1F8D1E3-32DE-4DF7-8138-38262EF436F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

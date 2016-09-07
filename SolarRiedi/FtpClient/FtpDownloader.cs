@@ -1,15 +1,15 @@
 ﻿using ArxOne.Ftp;
+using FtpDownloader.Contract;
 using System;
 using System.Net;
-using FtpClient.Client;
 
-namespace FtpClient
+namespace FtpDownloader
 {
-    public class FtpClient : IFtpClient
+    public class FtpDownloader : IFtpDownloader
     {
         public void DownLoad(Uri uri, NetworkCredential credentials, string targedPath)
         {
-            using (var ftpClient = new ArxOne.Ftp.FtpClient(uri, credentials))
+            using (var ftpClient = new FtpClient(uri, credentials))
             {
                 var stream = ftpClient.Retr("/httpdocs/min160901.csv");
 
@@ -22,8 +22,6 @@ namespace FtpClient
                         fileStream.Write(buffer, 0, len);
                     }
                 }
-
-                Console.WriteLine("");
             }
         }
     }
