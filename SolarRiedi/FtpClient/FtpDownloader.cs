@@ -1,25 +1,33 @@
 ﻿using ArxOne.Ftp;
 using FtpDownloader.Contract;
 using System;
+using System.Linq;
 using System.Net;
 
 namespace FtpDownloader
 {
     public class FtpDownloader : IFtpDownloader
     {
-        public void DownLoad(Uri uri, NetworkCredential credentials, string targedPath)
+        public void DownLoad(Uri uri, NetworkCredential credentials, string targedPath, string filePrefix)
         {
             using (var ftpClient = new FtpClient(uri, credentials))
             {
-                var stream = ftpClient.Retr("/httpdocs/min160901.csv");
+                var fileList = ftpClient
+                    .ListEntries("")
+                    .Where(file => file.Name.Contains(filePrefix));
 
-                using (var fileStream = System.IO.File.Create(targedPath + "//test.csv"))
+                foreach(var file in fileList)
                 {
-                    byte[] buffer = new byte[8 * 1024];
-                    int len;
-                    while ((len = stream.Read(buffer, 0, buffer.Length)) > 0)
+                    var stream = ftpClient.Retr(file.Name);
+
+                    using (var fileStream = System.IO.File.Create(targedPath + "\\" + file.Name))
                     {
-                        fileStream.Write(buffer, 0, len);
+                        byte[] buffer = new byte[8 * 1024];
+                        int len;
+                        while ((len = stream.Read(buffer, 0, buffer.Length)) > 0)
+                        {
+                            fileStream.Write(buffer, 0, len);
+                        }
                     }
                 }
             }

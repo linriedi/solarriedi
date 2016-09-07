@@ -5,5 +5,6 @@
         string GetArchivePath();
         string GetFtpUri();
         string GetUserName();
+        string GetFilePrefix();
     }
 }

@@ -3,4 +3,5 @@
   <archiveLocation value = "C:\Users\linri\OneDrive\SolarRiedi\MessungenAnlage" />
   <ftpUri value = "ftp://solarriedi.ch/" />
   <userName value = "ftpsolarrie0b35" />
+  <filePrefix value = "min" />
 </settings>

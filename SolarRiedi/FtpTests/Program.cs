@@ -19,7 +19,7 @@ namespace FtpTests
             var credentials = new NetworkCredential(settingsProvider.GetUserName(), password);
 
             var ftpClient = boostrapper.FtpDownloader;
-            ftpClient.DownLoad(new Uri(settingsProvider.GetFtpUri()), credentials, settingsProvider.GetArchivePath());
+            ftpClient.DownLoad(new Uri(settingsProvider.GetFtpUri()), credentials, settingsProvider.GetArchivePath(), settingsProvider.GetFilePrefix());
         }
     }
 }

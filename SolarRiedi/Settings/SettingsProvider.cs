@@ -13,6 +13,11 @@ namespace Settings
             return this.Get("archiveLocation");
         }
 
+        public string GetFilePrefix()
+        {
+            return this.Get("filePrefix");
+        }
+
         public string GetFtpUri()
         {
             return this.Get("ftpUri");
