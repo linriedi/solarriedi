@@ -1,8 +1,8 @@
 ﻿using ArxOne.Ftp;
 using Microsoft.OneDrive.Sdk;
 using Microsoft.OneDrive.Sdk.Authentication;
-using Settings;
 using Settings.Contracts;
+using Startup;
 using System;
 using System.Net;
 
@@ -12,7 +12,10 @@ namespace FtpTests
     {
         static void Main(string[] args)
         {
-            ISettingsProvider settingsProvider = new SettingsProvider();
+            var boostrapper = new Bootstrapper();
+            boostrapper.Configure();
+
+            var settingsProvider = boostrapper.SettingsProvider;
 
             Console.WriteLine("Enter Password: ");
             var password = Console.ReadLine();
