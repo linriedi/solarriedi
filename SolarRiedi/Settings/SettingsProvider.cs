@@ -24,17 +24,14 @@ namespace Settings
 
         private string Get(string key)
         {
-            var location = Assembly.GetExecutingAssembly().Location;
-            var path = Path.GetDirectoryName(location);
-            var settingsPath = path + "\\Settings.xml";
+            var appDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var settingsPath = string.Format("{0}\\Settings.xml", appDirectory);
 
-            var doc = XDocument.Load(settingsPath);
-            var authors = doc
+            return XDocument.Load(settingsPath)
                 .Root
                 .Elements()
-                .Single(e => e.Name == key);
-
-            return authors.FirstAttribute.Value;            
+                .Single(e => e.Name == key)
+                .FirstAttribute.Value;            
         }
     }
 }
