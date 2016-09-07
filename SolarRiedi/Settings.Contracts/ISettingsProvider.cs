@@ -1,4 +1,4 @@
-﻿namespace Settings
+﻿namespace Settings.Contracts
 {
     public interface ISettingsProvider
     {

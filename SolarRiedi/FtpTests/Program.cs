@@ -2,6 +2,7 @@
 using Microsoft.OneDrive.Sdk;
 using Microsoft.OneDrive.Sdk.Authentication;
 using Settings;
+using Settings.Contracts;
 using System;
 using System.Net;
 
