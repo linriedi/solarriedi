@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CBD3D900-3811-411F-A242-507CC3A1EBDD}</ProjectGuid>
+    <ProjectGuid>{F1F8D1E3-32DE-4DF7-8138-38262EF436F6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Startup</RootNamespace>
-    <AssemblyName>Startup</AssemblyName>
+    <RootNamespace>FtpClient</RootNamespace>
+    <AssemblyName>FtpClient</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ArxOne.Ftp, Version=1.9.3.0, Culture=neutral, PublicKeyToken=da7223da01d9ab51, processorArchitecture=MSIL">
+      <HintPath>..\packages\ArxOne.Ftp.1.9.3\lib\net40-Client\ArxOne.Ftp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,26 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="FtpClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FtpClient\FtpClient.csproj">
-      <Project>{f1f8d1e3-32de-4df7-8138-38262ef436f6}</Project>
-      <Name>FtpClient</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IFtpClient\FtpClient.Contract.csproj">
       <Project>{5320d49d-88e0-4e78-a5c5-3cb8665ebc82}</Project>
       <Name>FtpClient.Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Settings.Contracts\Settings.Contracts.csproj">
-      <Project>{1da7514b-8860-449b-9853-f2ff0e970e58}</Project>
-      <Name>Settings.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Settings\Settings.csproj">
-      <Project>{2c0db233-cd70-465d-9cc4-995e9a89bf81}</Project>
-      <Name>Settings</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
