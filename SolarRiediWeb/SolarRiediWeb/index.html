@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="scripts/jqxcore.js"></script>
+    <script type="text/javascript" src="scripts/jqxwindow.js"></script>
+    <script type="text/javascript" src="scripts/jqxdocking.js"></script>
+
+    <script type="text/javascript" src="scripts/jqxdata.js"></script>
+    <script type="text/javascript" src="scripts/jqxdraw.js"></script>
+    <script type="text/javascript" src="scripts/jqxchart.core.js"></script>
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+                    var sampleData = [
+                    { Day: '16:50:00', Goal: 23581 },
+                    { Day: '16:45:00', Goal: 23581 },
+                    { Day: '16:40:00', Goal: 33034 },
+                    { Day: '16:35:00', Goal: 43281 },
+                    { Day: '16:30:00', Goal: 44368 },
+                    { Day: '16:25:00', Goal: 43768 },
+                    { Day: '16:20:00', Goal: 43768 }
+                ];
+                  var settings = {
+                    title: "SolarRiedi",
+                    description: "Leistung am Tag X",
+                    padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                    titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                    source: sampleData,
+
+                    xAxis:
+                    {
+                        dataField: 'Day',
+                    },
+                    valueAxis:
+                    {
+                        dataField: 'Goal'
+                    },
+                    seriesGroups:
+                    [
+                        {
+                            type: 'line',
+                            series: [
+                                    { dataField: 'Goal', displayText: 'Leistung' },
+                            ]
+                        }
+                    ]
+                };
+    $('#jqxChart').jqxChart(settings);
+});
+    </script>
+
+</head>
+
+<body>
+    <h1>My Web Page</h1>
+    <div id='jqxChart' style="width: 680px; height: 400px">
+    </div>
+</body>
+</html>
