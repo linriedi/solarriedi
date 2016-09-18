@@ -1,6 +1,6 @@
 ﻿using ArxOne.Ftp;
+using Linus.SolarRiedi.AzureStorageWrapper.Contracts;
 using Linus.SolarRiedi.FtpDownloader.Contracs;
-using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Linq;
 using System.Net;
@@ -9,14 +9,18 @@ namespace Linus.SolarRiedi.FtpDownloader
 {
     public class FtpDownlaoder : IFtpDownloader
     {
+        private IAzureStorage azureStorage;
+        
+        public FtpDownlaoder(IAzureStorage azureStorage)
+        {
+            this.azureStorage = azureStorage;
+        }
+
         public void DownLoad(Uri uri, NetworkCredential credentials, string containerName, string filePrefix)
         {
             Console.WriteLine("Start download of files");
 
-            var storageAccount = CloudStorageAccount.Parse("***********************");
-            var blobClient = storageAccount.CreateCloudBlobClient();
-            var container = blobClient.GetContainerReference(containerName);
-            container.CreateIfNotExists();
+            this.azureStorage.Init(containerName);
 
             using (var ftpClient = new FtpClient(uri, credentials))
             {
@@ -26,11 +30,11 @@ namespace Linus.SolarRiedi.FtpDownloader
 
                 foreach (var file in fileList)
                 {
-                    var stream = ftpClient.Retr(file.Name);
-                    var blockBlob = container.GetBlockBlobReference(file.Name);
-
                     Console.WriteLine("download and save file {0}", file.Name);
-                    blockBlob.UploadFromStream(stream);
+
+                    var stream = ftpClient.Retr(file.Name);
+                    this.azureStorage.UploadFromStream(stream, file.Name);
+                    
                     Console.WriteLine("SUCCESSFULLY downloaded and save file {0}", file.Name);
                 }
             }

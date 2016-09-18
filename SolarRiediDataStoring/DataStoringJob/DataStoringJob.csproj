@@ -74,6 +74,14 @@
     <None Include="Properties\webjob-publish-settings.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AzureStorageService\AzureStorageService.csproj">
+      <Project>{c8b927d5-ebee-45a4-a5d2-6a3a92af2250}</Project>
+      <Name>AzureStorageService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AzureStorageWrapper.Contracts\AzureStorageWrapper.Contracts.csproj">
+      <Project>{4997b6d4-48b0-49d9-b0e6-9cbcf1ecc137}</Project>
+      <Name>AzureStorageWrapper.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataStoringService.Contracts\DataStoringService.Contracts.csproj">
       <Project>{56795986-259f-4240-96ed-33998f0e7358}</Project>
       <Name>DataStoringService.Contracts</Name>

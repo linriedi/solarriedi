@@ -13,12 +13,13 @@ namespace Linus.SolarRiedi.DataStoringService
         {
             this.ftpDownlaoder = ftpDownlaoder;
         }
+             
 
         public void StoreData()
         {
             Console.WriteLine("Start store data in service");
 
-            this.ftpDownlaoder.DownLoad(*****************************************);
+            this.ftpDownlaoder.DownLoad();
 
             Console.WriteLine("End store data in service");
         }

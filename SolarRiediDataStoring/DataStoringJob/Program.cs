@@ -1,7 +1,7 @@
-﻿using Linus.SolarRiedi.DataStoringService;
+﻿using Linus.SolarRiedi.AzureStorageService;
+using Linus.SolarRiedi.DataStoringService;
 using Microsoft.Azure.WebJobs;
 using System;
-using System.Diagnostics;
 
 namespace Linus.SolarRiedi.DataStoringJob
 {
@@ -15,7 +15,8 @@ namespace Linus.SolarRiedi.DataStoringJob
             Console.Write("Start web job to store measurement data for solarriedi");
             var host = new JobHost();
 
-            var service = new Service(new FtpDownloader.FtpDownlaoder());
+            var service = new Service(new FtpDownloader.FtpDownlaoder(new StorageService()));
+
             service.StoreData();
 
             Console.Write("End of web job to store measurement data for solarriedi");

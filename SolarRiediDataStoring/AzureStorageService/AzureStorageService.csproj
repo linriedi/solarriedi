@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6583D95B-508F-425D-B5B4-4A7070C948F5}</ProjectGuid>
+    <ProjectGuid>{C8B927D5-EBEE-45A4-A5D2-6A3A92AF2250}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Linus.SolarRiedi.FtpDownloader</RootNamespace>
-    <AssemblyName>FtpDownloader</AssemblyName>
+    <RootNamespace>Linus.SolarRiedi.AzureStorageService</RootNamespace>
+    <AssemblyName>AzureStorageService</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ArxOne.Ftp, Version=1.9.3.0, Culture=neutral, PublicKeyToken=da7223da01d9ab51, processorArchitecture=MSIL">
-      <HintPath>..\packages\ArxOne.Ftp.1.9.3\lib\net40-Client\ArxOne.Ftp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
@@ -72,17 +68,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FtpDownlaoder.cs" />
+    <Compile Include="StorageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AzureStorageWrapper.Contracts\AzureStorageWrapper.Contracts.csproj">
       <Project>{4997b6d4-48b0-49d9-b0e6-9cbcf1ecc137}</Project>
       <Name>AzureStorageWrapper.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FtpDownloader.Contracs\FtpDownloader.Contracs.csproj">
-      <Project>{6d4b3a6e-590b-4846-a9fe-3c841a08b275}</Project>
-      <Name>FtpDownloader.Contracs</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

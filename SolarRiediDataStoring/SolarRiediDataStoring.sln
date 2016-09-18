@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpDownloader.Contracs", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpDownloader", "FtpDownloader\FtpDownloader.csproj", "{6583D95B-508F-425D-B5B4-4A7070C948F5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wrapper", "wrapper", "{5E58A64E-5594-4A9C-87C1-A2D94C9F8386}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureStorageWrapper.Contracts", "AzureStorageWrapper.Contracts\AzureStorageWrapper.Contracts.csproj", "{4997B6D4-48B0-49D9-B0E6-9CBCF1ECC137}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureStorageService", "AzureStorageService\AzureStorageService.csproj", "{C8B927D5-EBEE-45A4-A5D2-6A3A92AF2250}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +47,14 @@ Global
 		{6583D95B-508F-425D-B5B4-4A7070C948F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6583D95B-508F-425D-B5B4-4A7070C948F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6583D95B-508F-425D-B5B4-4A7070C948F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4997B6D4-48B0-49D9-B0E6-9CBCF1ECC137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4997B6D4-48B0-49D9-B0E6-9CBCF1ECC137}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4997B6D4-48B0-49D9-B0E6-9CBCF1ECC137}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4997B6D4-48B0-49D9-B0E6-9CBCF1ECC137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8B927D5-EBEE-45A4-A5D2-6A3A92AF2250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B927D5-EBEE-45A4-A5D2-6A3A92AF2250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B927D5-EBEE-45A4-A5D2-6A3A92AF2250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B927D5-EBEE-45A4-A5D2-6A3A92AF2250}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,5 +64,7 @@ Global
 		{56795986-259F-4240-96ED-33998F0E7358} = {94AF240D-5660-4EAE-83E2-6AE6BFBF09FF}
 		{6D4B3A6E-590B-4846-A9FE-3C841A08B275} = {94AF240D-5660-4EAE-83E2-6AE6BFBF09FF}
 		{6583D95B-508F-425D-B5B4-4A7070C948F5} = {94AF240D-5660-4EAE-83E2-6AE6BFBF09FF}
+		{4997B6D4-48B0-49D9-B0E6-9CBCF1ECC137} = {5E58A64E-5594-4A9C-87C1-A2D94C9F8386}
+		{C8B927D5-EBEE-45A4-A5D2-6A3A92AF2250} = {5E58A64E-5594-4A9C-87C1-A2D94C9F8386}
 	EndGlobalSection
 EndGlobal
