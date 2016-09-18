@@ -12,5 +12,6 @@ namespace Linus.SolarRiedi.Settings.Contracts
         string GetStorageConnectionString();
         Uri GetFtpUri();
         NetworkCredential GetFtpCredentials();
+        string GetDbConnectionString();
     }
 }

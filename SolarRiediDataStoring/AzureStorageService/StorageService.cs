@@ -4,6 +4,8 @@ using Linus.SolarRiedi.AzureStorageWrapper.Contracts;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Linus.SolarRiedi.Settings.Contracts;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Linus.SolarRiedi.AzureStorageService
 {
@@ -30,6 +32,19 @@ namespace Linus.SolarRiedi.AzureStorageService
         {
             var blockBlob = this.container.GetBlockBlobReference(fileName);
             blockBlob.UploadFromStream(stream);
+        }
+
+        public void GetStream(string fileName, Stream stream)
+        {
+            var blob = this.container.GetBlockBlobReference(fileName);
+            blob.DownloadToStream(stream);
+        }
+
+        public IEnumerable<string> GetAllFiles()
+        {
+            return this.container
+                .ListBlobs()
+                .Select(b => Path.GetFileName(b.Uri.LocalPath));
         }
     }
 }

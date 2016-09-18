@@ -82,6 +82,10 @@
       <Project>{4997b6d4-48b0-49d9-b0e6-9cbcf1ecc137}</Project>
       <Name>AzureStorageWrapper.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ConnectionWrapper.Contracts\ConnectionWrapper.Contracts.csproj">
+      <Project>{81fbcfae-7070-4132-8c02-dea24ff8069b}</Project>
+      <Name>ConnectionWrapper.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataStoringService.Contracts\DataStoringService.Contracts.csproj">
       <Project>{56795986-259f-4240-96ed-33998f0e7358}</Project>
       <Name>DataStoringService.Contracts</Name>
@@ -89,6 +93,10 @@
     <ProjectReference Include="..\DataStoringService\DataStoringService.csproj">
       <Project>{28c26b3d-dcb0-4216-a971-baab213304e9}</Project>
       <Name>DataStoringService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DbConnectionService\DbConnectionService.csproj">
+      <Project>{70372794-82e7-471e-a03a-2cf8fba244ae}</Project>
+      <Name>DbConnectionService</Name>
     </ProjectReference>
     <ProjectReference Include="..\FtpDownloader.Contracs\FtpDownloader.Contracs.csproj">
       <Project>{6d4b3a6e-590b-4846-a9fe-3c841a08b275}</Project>
@@ -105,6 +113,14 @@
     <ProjectReference Include="..\Settings\Settings.csproj">
       <Project>{4499501f-0d53-4d69-9ad1-76d3831b8231}</Project>
       <Name>Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolarRiediDBUpdater.Contracs\SolarRiediDBUpdater.Contracs.csproj">
+      <Project>{b3d815e0-21b9-470d-b9cd-f10515f55dee}</Project>
+      <Name>SolarRiediDBUpdater.Contracs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolarRiediDBUpdater\SolarRiediDBUpdater.csproj">
+      <Project>{2a037c81-1ee8-4fec-9bb9-8b72bb323d41}</Project>
+      <Name>SolarRiediDBUpdater</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,6 +6,11 @@ namespace Linus.SolarRiedi.Settings
 {
     public class SettingsProvider : ISettingsProvider
     {
+        public string GetDbConnectionString()
+        {
+            return null;
+        }
+
         public NetworkCredential GetFtpCredentials()
         {
             return null;

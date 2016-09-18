@@ -1,17 +1,19 @@
-﻿using Linus.SolarRiedi.DataStoringService.Contracts;
-using System;
+﻿using System;
+using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
+using Linus.SolarRiedi.DataStoringService.Contracts;
 using Linus.SolarRiedi.FtpDownloader.Contracs;
-using System.Net;
 
 namespace Linus.SolarRiedi.DataStoringService
 {
     public class Service : IService
     {
-        private IFtpDownloader ftpDownlaoder;
+        private readonly IDatabankService databankService;
+        private readonly IFtpDownloader ftpDownlaoder;
 
-        public Service(IFtpDownloader ftpDownlaoder)
+        public Service(IFtpDownloader ftpDownlaoder, IDatabankService databankService)
         {
             this.ftpDownlaoder = ftpDownlaoder;
+            this.databankService = databankService;
         }
              
 
@@ -20,6 +22,7 @@ namespace Linus.SolarRiedi.DataStoringService
             Console.WriteLine("Start store data in service");
 
             this.ftpDownlaoder.DownLoad("mesiraziun", "min");
+            this.databankService.UpdateDatabank();
 
             Console.WriteLine("End store data in service");
         }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{28C26B3D-DCB0-4216-A971-BAAB213304E9}</ProjectGuid>
+    <ProjectGuid>{2A037C81-1EE8-4FEC-9BB9-8B72BB323D41}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Linus.SolarRiedi.DataStoringService</RootNamespace>
-    <AssemblyName>DataStoringService</AssemblyName>
+    <RootNamespace>Linus.SolarRiedi.SolarRiediDBUpdater</RootNamespace>
+    <AssemblyName>SolarRiediDBUpdater</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,26 +44,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service.cs" />
+    <Compile Include="DatabankService.cs" />
+    <Compile Include="DatabankServiceModule.cs" />
+    <Compile Include="DataTableCreator.cs" />
+    <Compile Include="IDataTableCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AzureStorageWrapper.Contracts\AzureStorageWrapper.Contracts.csproj">
+      <Project>{4997B6D4-48B0-49D9-B0E6-9CBCF1ECC137}</Project>
+      <Name>AzureStorageWrapper.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConnectionWrapper.Contracts\ConnectionWrapper.Contracts.csproj">
+      <Project>{81fbcfae-7070-4132-8c02-dea24ff8069b}</Project>
+      <Name>ConnectionWrapper.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataStoringService.Contracts\DataStoringService.Contracts.csproj">
       <Project>{56795986-259f-4240-96ed-33998f0e7358}</Project>
       <Name>DataStoringService.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FtpDownloader.Contracs\FtpDownloader.Contracs.csproj">
-      <Project>{6d4b3a6e-590b-4846-a9fe-3c841a08b275}</Project>
-      <Name>FtpDownloader.Contracs</Name>
     </ProjectReference>
     <ProjectReference Include="..\Settings.Contracts\Settings.Contracts.csproj">
       <Project>{0cee89c3-777b-40fc-9e79-b0218a84cb6e}</Project>
       <Name>Settings.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\SolarRiediDBUpdater.Contracs\SolarRiediDBUpdater.Contracs.csproj">
-      <Project>{b3d815e0-21b9-470d-b9cd-f10515f55dee}</Project>
+      <Project>{B3D815E0-21B9-470D-B9CD-F10515F55DEE}</Project>
       <Name>SolarRiediDBUpdater.Contracs</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
