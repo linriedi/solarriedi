@@ -19,7 +19,7 @@ namespace Linus.SolarRiedi.DataStoringService
         {
             Console.WriteLine("Start store data in service");
 
-            this.ftpDownlaoder.DownLoad();
+            this.ftpDownlaoder.DownLoad("mesiraziun", "min");
 
             Console.WriteLine("End store data in service");
         }

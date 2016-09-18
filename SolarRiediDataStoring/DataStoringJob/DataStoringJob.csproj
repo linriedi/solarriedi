@@ -98,6 +98,14 @@
       <Project>{6583d95b-508f-425d-b5b4-4a7070c948f5}</Project>
       <Name>FtpDownloader</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Settings.Contracts\Settings.Contracts.csproj">
+      <Project>{0cee89c3-777b-40fc-9e79-b0218a84cb6e}</Project>
+      <Name>Settings.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Settings\Settings.csproj">
+      <Project>{4499501f-0d53-4d69-9ad1-76d3831b8231}</Project>
+      <Name>Settings</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebJobs.Publish.1.0.9\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish.1.0.9\tools\webjobs.targets')" />

@@ -76,6 +76,10 @@
       <Project>{4997b6d4-48b0-49d9-b0e6-9cbcf1ecc137}</Project>
       <Name>AzureStorageWrapper.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Settings.Contracts\Settings.Contracts.csproj">
+      <Project>{0CEE89C3-777B-40FC-9E79-B0218A84CB6E}</Project>
+      <Name>Settings.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,6 +1,7 @@
 ﻿using ArxOne.Ftp;
 using Linus.SolarRiedi.AzureStorageWrapper.Contracts;
 using Linus.SolarRiedi.FtpDownloader.Contracs;
+using Linus.SolarRiedi.Settings.Contracts;
 using System;
 using System.Linq;
 using System.Net;
@@ -9,15 +10,20 @@ namespace Linus.SolarRiedi.FtpDownloader
 {
     public class FtpDownlaoder : IFtpDownloader
     {
-        private IAzureStorage azureStorage;
-        
-        public FtpDownlaoder(IAzureStorage azureStorage)
+        private readonly IAzureStorage azureStorage;
+        private readonly ISettingsProvider settingsProvider;
+
+        public FtpDownlaoder(IAzureStorage azureStorage, ISettingsProvider settingsProvider)
         {
+            this.settingsProvider = settingsProvider;
             this.azureStorage = azureStorage;
         }
 
-        public void DownLoad(Uri uri, NetworkCredential credentials, string containerName, string filePrefix)
+        public void DownLoad(string containerName, string filePrefix)
         {
+            var uri = this.settingsProvider.GetFtpUri();
+            var credentials = this.settingsProvider.GetFtpCredentials();
+
             Console.WriteLine("Start download of files");
 
             this.azureStorage.Init(containerName);

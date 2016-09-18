@@ -3,16 +3,24 @@ using System.IO;
 using Linus.SolarRiedi.AzureStorageWrapper.Contracts;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Linus.SolarRiedi.Settings.Contracts;
 
 namespace Linus.SolarRiedi.AzureStorageService
 {
     public class StorageService : IAzureStorage
     {
         private CloudBlobContainer container;
+        private readonly ISettingsProvider settingsProvider;
+
+        public StorageService (ISettingsProvider settingsProvider)
+        {
+            this.settingsProvider = settingsProvider;
+        }
 
         public void Init(string containerName)
         {
-            var storageAccount = CloudStorageAccount.Parse("*******");
+            //var storageAccount = CloudStorageAccount.Parse("");
+            var storageAccount = CloudStorageAccount.Parse(this.settingsProvider.GetStorageConnectionString());
             var blobClient = storageAccount.CreateCloudBlobClient();
             this.container = blobClient.GetContainerReference(containerName);
             this.container.CreateIfNotExists();
