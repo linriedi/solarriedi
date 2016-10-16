@@ -93,7 +93,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             var date = Time.CreateDateTimeFromFileName(fileNames.First());
             var sqlCommand = this.dataTableCreator.CreteDeleteFrom(date);
 
-            //this.dbConnection.Insert(sqlCommand, this.settingsProvider.GetDbConnectionString());
+            this.dbConnection.Insert(sqlCommand, this.settingsProvider.GetDbConnectionString());
             this.DoUpdate(fileNames);
         }
 
