@@ -26,5 +26,21 @@ namespace Common
             dateAsInt += (date.Year - 2000) * 10000;
             return dateAsInt * 10000;
         }
+
+        public static int CreateDateTimeAsIntFromString(string date, string time)
+        {
+            int dateAsInt = 0;
+ 
+            var splitted = date.Split('.');
+            dateAsInt += int.Parse(splitted[2]) * 100000000;
+            dateAsInt += int.Parse(splitted[1]) * 1000000;
+            dateAsInt += int.Parse(splitted[0]) * 10000;
+
+            splitted = time.Split(':');
+            dateAsInt += int.Parse(splitted[0]) * 100;
+            dateAsInt += int.Parse(splitted[1]);
+
+            return dateAsInt;
+        }
     }
 }

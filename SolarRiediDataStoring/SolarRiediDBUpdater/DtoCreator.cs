@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
+using Common;
 
 namespace Linus.SolarRiedi.SolarRiediDBUpdater
 {
@@ -11,9 +12,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             var fiveMinutes = new List<FiveMinutes>();
             foreach (var row in matrix)
             {
-                var datum = new DatumBuilder()
-                    .WithDateInfo(row[0], row[1])
-                    .Build();
+                var datum = Time.CreateDateTimeAsIntFromString(row[0], row[1]);
 
                 var fiveMinute = new DtoBuilder()
                     .WithDatum(datum)

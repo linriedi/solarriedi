@@ -47,7 +47,6 @@
     <Compile Include="DatabankService.cs" />
     <Compile Include="DatabankServiceModule.cs" />
     <Compile Include="DataTableCreator.cs" />
-    <Compile Include="DatumBuilder.cs" />
     <Compile Include="DtoBuilder.cs" />
     <Compile Include="DtoCreator.cs" />
     <Compile Include="EnumerableExtensions.cs" />

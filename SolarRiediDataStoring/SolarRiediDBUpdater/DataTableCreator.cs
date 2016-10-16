@@ -85,7 +85,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             var rowBuilder = new StringBuilder();
             foreach (var row in table)
             {
-                                rowBuilder.Append("(");
+                rowBuilder.Append("(");
                 rowBuilder.Append(string.Format("'{0} {1}'", row[0], row[1]));
                 rowBuilder.Append(", ");
                 for (int i = 2; i < row.Count(); i++)
