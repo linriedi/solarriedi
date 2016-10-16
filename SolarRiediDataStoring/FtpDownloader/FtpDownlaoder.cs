@@ -22,19 +22,19 @@ namespace Linus.SolarRiedi.FtpDownloader
 
         public void DownLoad(string containerName, string filePrefix)
         {
+            this.Download(containerName, filePrefix, DateTime.MinValue);
+        }
+                
+        public void DownLoadOfLastFourDays(string containerName, string filePrefix)
+        {
             this.azureStorage.Init(containerName);
             var files = this.azureStorage.GetAllFiles();
 
             var last = files.Last(file => file.Contains(filePrefix));
             var lastFileDateTime = this.ExtractDateTime(last);
-            lastFileDateTime -= TimeSpan.FromDays(3); 
+            lastFileDateTime -= TimeSpan.FromDays(3);
 
             this.Download(containerName, filePrefix, lastFileDateTime);
-        }
-                
-        public void DownLoadOfLastFourDays(string containerName, string filePrefix)
-        {
-            this.DownLoad(containerName, filePrefix);
         }
 
         private void Download(string containerName, string filePrefix, DateTime fromDate)

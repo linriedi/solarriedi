@@ -29,12 +29,12 @@ namespace Linus.SolarRiedi.DataStoringService
 
         public void StoreDataOfLastFourDays()
         {
-            Console.WriteLine("Start store data in service");
+            Console.WriteLine("Start store data for the last four days in service");
 
             this.ftpDownlaoder.DownLoadOfLastFourDays("mesiraziun", "min");
             this.databankService.UpdateDatabankOfLastFourDays();
 
-            Console.WriteLine("End store data in service");
+            Console.WriteLine("End store data for the last four days in service");
         }
     }
 }
