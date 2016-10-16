@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
 
 namespace Linus.SolarRiedi.SolarRiediDBUpdater
 {
@@ -36,6 +36,12 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             builder.Append(this.CreateInsertString("producziunSis", prod6));
 
             return builder.ToString();
+        }
+
+        public IEnumerable<FiveMinutes> CreateMinutesEntry(string text)
+        {
+            var matrix = CreateTableEntry(text, 2, 77);
+            return new DtoCreator().Create(matrix);
         }
 
         private static List<List<string>> CreateTableEntry(string text, int startIndexConsum, int endIndexConsum)
@@ -93,6 +99,11 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             builder.Append(rowBuilder.ToString());
             builder.Remove(builder.Length - 2, 2);
             return builder.ToString();
+        }
+
+        public string CreteDeleteFrom(int date)
+        {
+            return string.Format("Delete from testIndex where datum >= {0}", date);
         }
     }
 }

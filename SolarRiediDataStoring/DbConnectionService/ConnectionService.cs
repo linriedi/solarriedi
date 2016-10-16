@@ -49,8 +49,28 @@ namespace Linus.SolarRiedi.DbConnectionService
             {
                 con.Open();
                 using (SqlCommand command = new SqlCommand(insertString, con))
+                {
+                    command.CommandTimeout = 120;
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                    }
+                }
+            }
+        }
+
+        public void Select(string sqlCommand, string connectionString)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sqlCommand, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
+                    while (reader.Read())
+                    {
+                        Console.WriteLine("{0} {1} {2}",
+                        reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2));
+                    }
                 }
             }
         }

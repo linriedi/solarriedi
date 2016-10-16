@@ -10,5 +10,6 @@ namespace Linus.SolarRiedi.ConnectionWrapper.Contracts
     {
         void Insert(string insertString, string connectionString);
         void DeleteItemsInTable(string connectionString);
+        void Select(string sqlCommand, string connectionString);
     }
 }

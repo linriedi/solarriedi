@@ -47,8 +47,13 @@
     <Compile Include="DatabankService.cs" />
     <Compile Include="DatabankServiceModule.cs" />
     <Compile Include="DataTableCreator.cs" />
+    <Compile Include="DatumBuilder.cs" />
+    <Compile Include="DtoBuilder.cs" />
+    <Compile Include="DtoCreator.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IDataTableCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AzureStorageWrapper.Contracts\AzureStorageWrapper.Contracts.csproj">

@@ -37,6 +37,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbConnectionService", "DbCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitDatabase", "InitDatabase\InitDatabase.csproj", "{A0B51991-1A2C-411F-AEDB-F8FE63ECB533}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{06398A36-D2D7-4200-95E8-FD84F930DF24}"
+	ProjectSection(SolutionItems) = preProject
+		CreateTable.sql = CreateTable.sql
+		Delete.sql = Delete.sql
+		Select.sql = Select.sql
+		solarriediDB.txt = solarriediDB.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitDataStorage", "InitDataStorage\InitDataStorage.csproj", "{D3EEC990-F199-4418-B374-C5154E0C8129}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +109,10 @@ Global
 		{A0B51991-1A2C-411F-AEDB-F8FE63ECB533}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0B51991-1A2C-411F-AEDB-F8FE63ECB533}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0B51991-1A2C-411F-AEDB-F8FE63ECB533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3EEC990-F199-4418-B374-C5154E0C8129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3EEC990-F199-4418-B374-C5154E0C8129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3EEC990-F199-4418-B374-C5154E0C8129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3EEC990-F199-4418-B374-C5154E0C8129}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
