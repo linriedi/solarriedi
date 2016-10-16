@@ -1,4 +1,5 @@
 ﻿using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
+using System;
 using System.Collections.Generic;
 
 namespace Linus.SolarRiedi.SolarRiediDBUpdater
@@ -7,6 +8,6 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
     {
         string Crete(string text);
         IEnumerable<FiveMinutes> CreateMinutesEntry(string text);
-        string CreteDeleteFrom(int date);
+        string CreteDeleteFrom(DateTimeOffset date);
     }
 }

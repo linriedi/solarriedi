@@ -60,6 +60,10 @@
       <Project>{4997B6D4-48B0-49D9-B0E6-9CBCF1ECC137}</Project>
       <Name>AzureStorageWrapper.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{49255a77-5999-49e3-9e51-c809120307e8}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ConnectionWrapper.Contracts\ConnectionWrapper.Contracts.csproj">
       <Project>{81fbcfae-7070-4132-8c02-dea24ff8069b}</Project>
       <Name>ConnectionWrapper.Contracts</Name>

@@ -1,4 +1,5 @@
-﻿using Linus.SolarRiedi.AzureStorageWrapper.Contracts;
+﻿using Common;
+using Linus.SolarRiedi.AzureStorageWrapper.Contracts;
 using Linus.SolarRiedi.ConnectionWrapper.Contracts;
 using Linus.SolarRiedi.Settings.Contracts;
 using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
@@ -120,28 +121,13 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
                 .GetAllFiles()
                 .LastFour();
 
-            var date = this.ExtractDateFromString(fileNames.First());
+            var date = Time.CreateDateTimeFromFileName(fileNames.First());
             var sqlCommand = this.dataTableCreator.CreteDeleteFrom(date);
 
             this.dbConnection.Insert(sqlCommand, this.settingsProvider.GetDbConnectionString());
             this.DoUpdate(fileNames);
         }
-
-        private int ExtractDateFromString(string fileName)
-        {
-            var dateInString = new StringBuilder(new StringBuilder(fileName).ToString(3, 6));
-
-            var year = int.Parse(dateInString.ToString(0,2));
-            var month = int.Parse(dateInString.ToString(2,2));
-            var day = int.Parse(dateInString.ToString(4, 2));
-
-            int date = 0;
-            date += day;
-            date += month * 100;
-            date += year * 10000;
-            return date * 10000;
-        }
-
+              
         private string GetExelFileAsString(string fileName)
         {
             var text = string.Empty;
