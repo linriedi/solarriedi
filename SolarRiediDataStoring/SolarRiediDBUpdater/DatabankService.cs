@@ -41,20 +41,6 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             Console.WriteLine("Finish run sqlCommand");
         }
 
-        public void Delete(int from, int to)
-        {
-            var sqlCommand = string.Format("Delete from testIndex where datum > {0} and datum < {1}", from, to);
-            this.dbConnection.Select(sqlCommand, this.settingsProvider.GetDbConnectionString());
-            Console.WriteLine("delete");
-        }
-
-        public void Select(int from, int to)
-        {
-            var sqlCommand = string.Format("Select * from testIndex where datum > {0} and datum < {1}", from, to);
-            this.dbConnection.Select(sqlCommand, this.settingsProvider.GetDbConnectionString());
-            Console.WriteLine("select");
-        }
-
         public void Insert(int date, int production, string messageText)
         {
             for(int i = 0; i < 100; i++)
@@ -96,6 +82,21 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             DoUpdate(fileNames);
         }
 
+        public void UpdateDatabankOfLastFourDays()
+        {
+            this.azureStorage.Init("mesiraziun");
+            var fileNames = this
+                .azureStorage
+                .GetAllFiles()
+                .LastFour();
+
+            var date = Time.CreateDateTimeFromFileName(fileNames.First());
+            var sqlCommand = this.dataTableCreator.CreteDeleteFrom(date);
+
+            this.dbConnection.Insert(sqlCommand, this.settingsProvider.GetDbConnectionString());
+            this.DoUpdate(fileNames);
+        }
+
         private void DoUpdate(IEnumerable<string> fileNames)
         {
             foreach (var fileName in fileNames)
@@ -113,28 +114,13 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             }
         }
 
-        public void UpdateDatabankOfLastFourDays()
-        {
-            this.azureStorage.Init("mesiraziun");
-            var fileNames = this
-                .azureStorage
-                .GetAllFiles()
-                .LastFour();
-
-            var date = Time.CreateDateTimeFromFileName(fileNames.First());
-            var sqlCommand = this.dataTableCreator.CreteDeleteFrom(date);
-
-            this.dbConnection.Insert(sqlCommand, this.settingsProvider.GetDbConnectionString());
-            this.DoUpdate(fileNames);
-        }
-              
         private string GetExelFileAsString(string fileName)
         {
             var text = string.Empty;
             using (var memoryStream = new MemoryStream())
             {
                 this.azureStorage.GetStream(fileName, memoryStream);
-                text = System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
+                text = Encoding.UTF8.GetString(memoryStream.ToArray());
             }
 
             return text;
