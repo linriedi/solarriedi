@@ -80,6 +80,10 @@
       <Project>{4997b6d4-48b0-49d9-b0e6-9cbcf1ecc137}</Project>
       <Name>AzureStorageWrapper.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{49255A77-5999-49E3-9E51-C809120307E8}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FtpDownloader.Contracs\FtpDownloader.Contracs.csproj">
       <Project>{6d4b3a6e-590b-4846-a9fe-3c841a08b275}</Project>
       <Name>FtpDownloader.Contracs</Name>

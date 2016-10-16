@@ -1,4 +1,5 @@
 ﻿using ArxOne.Ftp;
+using Common;
 using Linus.SolarRiedi.AzureStorageWrapper.Contracts;
 using Linus.SolarRiedi.FtpDownloader.Contracs;
 using Linus.SolarRiedi.Settings.Contracts;
@@ -31,13 +32,13 @@ namespace Linus.SolarRiedi.FtpDownloader
             var files = this.azureStorage.GetAllFiles();
 
             var last = files.Last(file => file.Contains(filePrefix));
-            var lastFileDateTime = this.ExtractDateTime(last);
+            var lastFileDateTime = Time.CreateDateTimeFromFileName(last);
             lastFileDateTime -= TimeSpan.FromDays(3);
 
             this.Download(containerName, filePrefix, lastFileDateTime);
         }
 
-        private void Download(string containerName, string filePrefix, DateTime fromDate)
+        private void Download(string containerName, string filePrefix, DateTimeOffset fromDate)
         {
             var uri = this.settingsProvider.GetFtpUri();
             var credentials = this.settingsProvider.GetFtpCredentials();
@@ -51,7 +52,7 @@ namespace Linus.SolarRiedi.FtpDownloader
                 var fileList = ftpClient
                     .ListEntries("")
                     .Where(file => file.Name.Contains(filePrefix))
-                    .Where(file => this.ExtractDateTime(file.Name) >= fromDate);
+                    .Where(file => Time.CreateDateTimeFromFileName(file.Name) >= fromDate);
                 
                 foreach (var file in fileList)
                 {
@@ -65,18 +66,6 @@ namespace Linus.SolarRiedi.FtpDownloader
             }
 
             Console.WriteLine("End download of files.");
-        }
-
-        private DateTime ExtractDateTime(string stringDateTime)
-        {
-            var builder = new StringBuilder(stringDateTime);
-            builder = new StringBuilder(builder.ToString(3,6));
-
-            var year = builder.ToString(0, 2);
-            var month = builder.ToString(2, 2);
-            var day = builder.ToString(4, 2);
-
-            return new DateTime(int.Parse(year) + 2000, int.Parse(month), int.Parse(day));
         }
     }
 }
