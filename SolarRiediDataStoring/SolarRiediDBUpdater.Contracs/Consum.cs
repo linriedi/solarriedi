@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Linus.SolarRiedi.SolarRiediDBUpdater.Contracs
+﻿namespace Linus.SolarRiedi.SolarRiediDBUpdater.Contracs
 {
     public class Consum
     {

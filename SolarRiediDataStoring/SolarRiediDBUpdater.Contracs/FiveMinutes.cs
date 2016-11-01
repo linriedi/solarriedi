@@ -2,22 +2,6 @@
 {
     public class FiveMinutes
     {
-        private static int count = 1;
-        
-        //TODO Remove
-        public static FiveMinutes Create()
-        {
-            return new FiveMinutes(
-                count++, 
-                Consum.Create(), 
-                Production.Create(),
-                Production.Create(),
-                Production.Create(),
-                Production.Create(),
-                Production.Create(),
-                Production.Create());
-        }
-
         public int Datum { get; private set; }
         public Consum Consum { get; private set; }
         public Production Production1 { get; private set; }

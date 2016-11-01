@@ -2,15 +2,6 @@
 {
     public class Production
     {
-        public static Production Create()
-        {
-            return new Production();
-        }
-
-        public Production()
-        {
-        }
-
         public int Pac { get; private set; }
         public int DaySum { get; private set; }
         public int Status { get; private set; }
