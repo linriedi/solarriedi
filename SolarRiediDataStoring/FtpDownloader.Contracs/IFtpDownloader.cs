@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net;
-
-namespace Linus.SolarRiedi.FtpDownloader.Contracs
+﻿namespace Linus.SolarRiedi.FtpDownloader.Contracs
 {
     public interface IFtpDownloader
     {

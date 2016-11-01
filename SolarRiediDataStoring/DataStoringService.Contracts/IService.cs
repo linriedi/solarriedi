@@ -4,6 +4,6 @@ namespace Linus.SolarRiedi.DataStoringService.Contracts
 {
     public interface IService
     {
-        void StoreData();
+        void StoreDataOfLastFourDays(string tableName, string filePrefix);
     }
 }
