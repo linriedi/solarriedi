@@ -29,7 +29,10 @@ namespace Linus.SolarRiedi.DataStoringJob
                     new ConnectionService(),
                     DatabankServiceModule.DataTableCreator));
 
-            service.StoreDataOfLastFourDays();
+            var tableName = "minutas";
+            var filePrefix = "min";
+
+            service.StoreDataOfLastFourDays(tableName, filePrefix);
 
             Console.Write("End of web job to store measurement data for solarriedi");
         }

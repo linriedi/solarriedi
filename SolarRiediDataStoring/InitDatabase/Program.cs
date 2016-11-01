@@ -18,7 +18,10 @@ namespace InitDatabase
                     new ConnectionService(),
                     DatabankServiceModule.DataTableCreator);
 
-            service.FullUpdate();
+            var tableName = "minutas";
+            var filePrefix = "min";
+
+            service.FullUpdateOnTable(tableName, filePrefix);
         }
     }
 }

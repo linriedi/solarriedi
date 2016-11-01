@@ -6,11 +6,11 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 {
     public class SqlCreator
     {
-        public string Create(IEnumerable<FiveMinutes> fiveMinutes)
+        public string Create(string tableName, IEnumerable<FiveMinutes> fiveMinutes)
         {
             var builder = new StringBuilder();
 
-            builder.Append("INSERT INTO testIndex VALUES");
+            builder.Append(string.Format("INSERT INTO {0} VALUES", tableName));
             foreach(var minute in fiveMinutes)
             {
                 AppendValues(minute, builder);
