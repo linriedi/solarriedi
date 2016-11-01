@@ -1,21 +1,18 @@
 ﻿using System.Text;
 using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
-using System.Collections.Generic;
 
 namespace Linus.SolarRiedi.SolarRiediDBUpdater
 {
     public class SqlCreator
     {
-        public string Create(string tableName, IEnumerable<FiveMinutes> fiveMinutes)
+        public string Create(string tableName, FiveMinutes fiveMinutes)
         {
             var builder = new StringBuilder();
 
             builder.Append(string.Format("INSERT INTO {0} VALUES", tableName));
-            foreach(var minute in fiveMinutes)
-            {
-                AppendValues(minute, builder);
-                builder.Append(", ");
-            }
+
+            AppendValues(fiveMinutes, builder);
+            builder.Append(", ");
 
             builder.Remove(builder.Length - 2, 2);
             return builder.ToString();
