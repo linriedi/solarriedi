@@ -29,29 +29,6 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             this.dbConnection = dbConnection;
             this.dataTableCreator = dataTableCreator;
         }     
-             
-        public void UpdateDatabank()
-        {
-            Console.WriteLine("Start Update Databank");
-                       
-            this.azureStorage.Init("mesiraziun");
-
-            this.dbConnection.DeleteItemsInTable(this.settingsProvider.GetDbConnectionString());
-            var fileNames = this.azureStorage.GetAllFiles("min");
-            foreach (var fileName in fileNames)
-            {
-                Console.WriteLine("Start insert measurments for file {0}", fileName);
-
-                string text = GetExelFileAsString(fileName);
-
-                var insertString = this.dataTableCreator.Crete(text);
-                this.dbConnection.Insert(insertString, this.settingsProvider.GetDbConnectionString());
-
-                Console.WriteLine("SUCCESSFULLY inserted measurments for file {0}", fileName);
-            }
-
-            Console.WriteLine("End Update Databank");
-        }
 
         public void FullUpdateOnTable(string tableName, string filePrefix)
         {

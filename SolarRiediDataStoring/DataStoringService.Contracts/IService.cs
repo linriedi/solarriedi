@@ -1,6 +1,4 @@
-﻿using Linus.SolarRiedi.FtpDownloader.Contracs;
-
-namespace Linus.SolarRiedi.DataStoringService.Contracts
+﻿namespace Linus.SolarRiedi.DataStoringService.Contracts
 {
     public interface IService
     {
