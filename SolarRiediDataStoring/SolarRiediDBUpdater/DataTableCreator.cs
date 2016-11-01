@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
+using Common;
 
 namespace Linus.SolarRiedi.SolarRiediDBUpdater
 {
@@ -11,6 +12,35 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
         {
             var matrix = CreateTableEntry(text, 2, 77);
             return new DtoCreator().Create(matrix);
+        }
+
+        public IEnumerable<Day> CreateDaysEntry(string text)
+        {
+            var blocks = CreateDayTableEntry(text);
+            return new DtoCreator().Create(blocks);
+        }
+
+        private static List<Block> CreateDayTableEntry(string text)
+        {
+            var lines = text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            return CreateBlocks(lines.RemoveLast().TakeFrom(1));
+        }
+
+        private static List<Block> CreateBlocks(IEnumerable<string> lines)
+        {
+            var linesList = lines.ToList();
+            var blocks = new List<Block>();
+            Block block = null;
+            for(var i = 0; i < linesList.Count(); i++)
+            {
+                if (i % 7 == 0)
+                {
+                    block = new Block();
+                    blocks.Add(block);
+                }
+                block.Add(linesList[i].Split(';').ToList());
+            }
+            return blocks;
         }
 
         private static List<List<string>> CreateTableEntry(string text, int startIndexConsum, int endIndexConsum)

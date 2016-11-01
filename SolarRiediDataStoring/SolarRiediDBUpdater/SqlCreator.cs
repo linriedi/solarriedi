@@ -12,6 +12,11 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             return string.Format("Delete from {0} where datum >= {1}", tableName, Time.ExtractDateTimeAsIntFromDateTime(date));
         }
 
+        public string CreateDelete(string tableName)
+        {
+            return string.Format("Delete from {0}", tableName);
+        }
+
         public string Create(string tableName, FiveMinutes fiveMinutes)
         {
             var builder = new StringBuilder();
@@ -25,6 +30,53 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             return builder.ToString();
         }
 
+        public string Create(string tableName, Day day)
+        {
+            var builder = new StringBuilder();
+
+            builder.Append(string.Format("INSERT INTO {0} VALUES", tableName));
+
+            builder.Append("(");
+            AppendValues(day, builder);
+            builder.Append(")");
+
+            return builder.ToString();
+        }
+
+        private void AppendValues(Day day, StringBuilder builder)
+        {
+            builder.Append(day.Datum);
+            builder.Append(", ");
+
+            builder.Append(day.Psum_0);
+            builder.Append(", ");
+            builder.Append(day.Pmax_0);
+            builder.Append(", ");
+            builder.Append(day.Psum_1);
+            builder.Append(", ");
+            builder.Append(day.Pmax_1);
+            builder.Append(", ");
+            builder.Append(day.Psum_2);
+            builder.Append(", ");
+            builder.Append(day.Pmax_2);
+            builder.Append(", ");
+            builder.Append(day.Psum_3);
+            builder.Append(", ");
+            builder.Append(day.Pmax_3);
+            builder.Append(", ");
+            builder.Append(day.Psum_4);
+            builder.Append(", ");
+            builder.Append(day.Pmax_4);
+            builder.Append(", ");
+            builder.Append(day.Psum_5);
+            builder.Append(", ");
+            builder.Append(day.Pmax_5);
+            builder.Append(", ");
+            builder.Append(day.Psum_6);
+            builder.Append(", ");
+            builder.Append(day.Pmax_6);
+        }
+              
         private void AppendValues(FiveMinutes fiveMinutes, StringBuilder builder)
         {
             builder.Append("(");

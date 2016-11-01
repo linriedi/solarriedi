@@ -53,6 +53,29 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             this.DoUpdate(fileNames, tableName);
         }
 
+        public void UpdateDays(string tableName, string filePrefix)
+        {
+            this.azureStorage.Init("mesiraziun");
+            var fileName = this
+                .azureStorage
+                .GetAllFiles(filePrefix)
+                .Single();
+
+            var deleteSqlCommand = new SqlCreator().CreateDelete(tableName);
+            this.dbConnection.RunSqlCommand(deleteSqlCommand, this.settingsProvider.GetDbConnectionString());
+
+            var text = GetExelFileAsString(fileName);
+            var entries = this.dataTableCreator.CreateDaysEntry(text);
+
+            foreach(var day in entries)
+            {
+                Console.WriteLine("Start insert day info {0}", day.Datum);
+                var sqlCommand = new SqlCreator().Create(tableName, day);
+                this.dbConnection.RunSqlCommand(sqlCommand, this.settingsProvider.GetDbConnectionString());
+                Console.WriteLine("Finish insert day info {0}", day.Datum);
+            }
+        }
+
         private void DoUpdate(IEnumerable<string> fileNames, string tableName)
         {
             foreach (var fileName in fileNames)

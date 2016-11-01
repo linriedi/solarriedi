@@ -39,6 +39,18 @@ namespace Common
             splitted = time.Split(':');
             dateAsInt += int.Parse(splitted[0]) * 100;
             dateAsInt += int.Parse(splitted[1]);
+                
+            return dateAsInt;
+        }
+
+        public static int CreateDateTimeAsIntFromString(string date)
+        {
+            int dateAsInt = 0;
+
+            var splitted = date.Split('.');
+            dateAsInt += int.Parse(splitted[2]) * 10000;
+            dateAsInt += int.Parse(splitted[1]) * 100;
+            dateAsInt += int.Parse(splitted[0]);
 
             return dateAsInt;
         }

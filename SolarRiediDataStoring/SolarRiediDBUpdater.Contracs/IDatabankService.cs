@@ -5,5 +5,7 @@
         void FullUpdateOnTable(string tableName, string filePrefix);
 
         void UpdateDatabankOfLastFourDays(string tableName, string filePrefix);
+
+        void UpdateDays(string tableName, string filePrefix);
     }
 }

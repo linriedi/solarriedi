@@ -44,12 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Block.cs" />
     <Compile Include="DatabankService.cs" />
     <Compile Include="DatabankServiceModule.cs" />
     <Compile Include="DataTableCreator.cs" />
+    <Compile Include="DayDtoCreator.cs" />
     <Compile Include="DtoBuilder.cs" />
     <Compile Include="DtoCreator.cs" />
-    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IDataTableCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlCreator.cs" />
