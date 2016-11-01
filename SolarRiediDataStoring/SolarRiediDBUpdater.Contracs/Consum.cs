@@ -2,11 +2,6 @@
 {
     public class Consum
     {
-        public static Consum Create()
-        {
-            return new Consum(0,0,0);
-        }
-        
         public Consum(int pac, int daySum, int status)
         {
             this.Pac = pac;
