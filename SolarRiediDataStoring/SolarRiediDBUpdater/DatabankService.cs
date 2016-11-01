@@ -29,17 +29,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             this.dbConnection = dbConnection;
             this.dataTableCreator = dataTableCreator;
         }     
-              
-        public void Insert(int date, int production, string messageText)
-        {
-            for(int i = 0; i < 100; i++)
-            {
-                var insertString = string.Format("INSERT INTO testIndex VALUES({0}, 98, 'hallo')", i);
-                this.dbConnection.Insert(insertString, this.settingsProvider.GetDbConnectionString());
-                Console.WriteLine("insert {0}", i);
-            }
-        }
-
+             
         public void UpdateDatabank()
         {
             Console.WriteLine("Start Update Databank");
