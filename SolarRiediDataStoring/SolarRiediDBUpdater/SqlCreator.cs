@@ -45,7 +45,35 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 
         public string Create(string tableName, Month month)
         {
-            return null;
+            var builder = new StringBuilder();
+
+            builder.Append(string.Format("INSERT INTO {0} VALUES", tableName));
+
+            builder.Append("(");
+            AppendValues(month, builder);
+            builder.Append(")");
+
+            return builder.ToString();
+        }
+
+        private void AppendValues(Month day, StringBuilder builder)
+        {
+            builder.Append(day.Datum);
+            builder.Append(", ");
+
+            builder.Append(day.Psum_0);
+            builder.Append(", ");
+            builder.Append(day.Psum_1);
+            builder.Append(", ");
+            builder.Append(day.Psum_2);
+            builder.Append(", ");
+            builder.Append(day.Psum_3);
+            builder.Append(", ");
+            builder.Append(day.Psum_4);
+            builder.Append(", ");
+            builder.Append(day.Psum_5);
+            builder.Append(", ");
+            builder.Append(day.Psum_6);
         }
 
         private void AppendValues(Day day, StringBuilder builder)

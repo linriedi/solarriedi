@@ -7,7 +7,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 {
     class DayDtoCreator
     {
-        internal Day Create(Block block)
+        internal Day CreateForDays(Block block)
         {
             var datumString = block.Lines.First().First();
 
@@ -43,6 +43,31 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
                 pmax_5,
                 psum_6,
                 pmax_6);
+        }
+
+        internal Month CreateForMonth(Block block)
+        {
+            var datumString = block.Lines.First().First();
+
+            int datum = Time.CreateMonthDateAsIntFromString(datumString);
+
+            int psum_0 = GetValue(block.Lines[0], 0);
+            int psum_1 = GetValue(block.Lines[1], 0);
+            int psum_2 = GetValue(block.Lines[2], 0);
+            int psum_3 = GetValue(block.Lines[3], 0);
+            int psum_4 = GetValue(block.Lines[4], 0);
+            int psum_5 = GetValue(block.Lines[5], 0);
+            int psum_6 = GetValue(block.Lines[6], 0);
+
+            return new Month(
+                datum,
+                psum_0,
+                psum_1,
+                psum_2,
+                psum_3,
+                psum_4,
+                psum_5,
+                psum_6);
         }
 
         private int GetValue(List<string> list, int index)

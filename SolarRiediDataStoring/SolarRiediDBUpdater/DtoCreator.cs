@@ -25,12 +25,23 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             return fiveMinutes;
         }
 
-        internal IEnumerable<Day> Create(List<Block> blocks)
+        internal IEnumerable<Day> CreateForDays(List<Block> blocks)
         {
             var days = new List<Day>();
             foreach(var block in blocks)
             {
-                var day = new DayDtoCreator().Create(block);
+                var day = new DayDtoCreator().CreateForDays(block);
+                days.Add(day);
+            }
+            return days;
+        }
+
+        internal IEnumerable<Month> CreateForMonth(List<Block> blocks)
+        {
+            var days = new List<Month>();
+            foreach (var block in blocks)
+            {
+                var day = new DayDtoCreator().CreateForMonth(block);
                 days.Add(day);
             }
             return days;

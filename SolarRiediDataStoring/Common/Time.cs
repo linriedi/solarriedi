@@ -54,5 +54,16 @@ namespace Common
 
             return dateAsInt;
         }
+
+        public static int CreateMonthDateAsIntFromString(string date)
+        {
+            int dateAsInt = 0;
+
+            var splitted = date.Split('.');
+            dateAsInt += int.Parse(splitted[2]) * 100;
+            dateAsInt += int.Parse(splitted[1]);
+
+            return dateAsInt;
+        }
     }
 }
