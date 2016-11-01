@@ -30,6 +30,7 @@ namespace Linus.SolarRiedi.DataStoringService
             this.databankService.UpdateMonth("meins", "month");
 
             this.ftpDownlaoder.DownLoad("mesiraziun", "year");
+            this.databankService.UpdateYear("onns", "year");
 
             Console.WriteLine("End store data for the last four days in service");
         }

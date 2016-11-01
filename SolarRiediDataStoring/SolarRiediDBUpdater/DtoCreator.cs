@@ -35,16 +35,27 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             }
             return days;
         }
-
+              
         internal IEnumerable<Month> CreateForMonth(List<Block> blocks)
         {
-            var days = new List<Month>();
+            var months = new List<Month>();
             foreach (var block in blocks)
             {
-                var day = new DayDtoCreator().CreateForMonth(block);
-                days.Add(day);
+                var month = new DayDtoCreator().CreateForMonth(block);
+                months.Add(month);
             }
-            return days;
+            return months;
+        }
+
+        internal IEnumerable<Year> CreateForYear(List<Block> blocks)
+        {
+            var years = new List<Year>();
+            foreach (var block in blocks)
+            {
+                var year = new DayDtoCreator().CreateForYear(block);
+                years.Add(year);
+            }
+            return years;
         }
     }
 }

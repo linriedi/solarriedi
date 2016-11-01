@@ -65,5 +65,15 @@ namespace Common
 
             return dateAsInt;
         }
+
+        public static int CreateYearDateAsIntFromString(string date)
+        {
+            int dateAsInt = 0;
+
+            var splitted = date.Split('.');
+            dateAsInt += int.Parse(splitted[2]);
+
+            return dateAsInt;
+        }
     }
 }

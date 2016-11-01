@@ -42,6 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{06398A36-D2D
 		CreateGis.sql = CreateGis.sql
 		CreateMeins.sql = CreateMeins.sql
 		CreateMinutas.sql = CreateMinutas.sql
+		CreateOnns.sql = CreateOnns.sql
 		Delete.sql = Delete.sql
 		Select.sql = Select.sql
 		solarriediDB.txt = solarriediDB.txt

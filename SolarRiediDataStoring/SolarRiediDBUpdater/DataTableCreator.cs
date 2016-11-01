@@ -16,17 +16,23 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 
         public IEnumerable<Day> CreateDaysEntry(string text)
         {
-            var blocks = CreateDayTableEntry(text);
+            var blocks = CreateTableEntry(text);
             return new DtoCreator().CreateForDays(blocks);
         }
 
         public IEnumerable<Month> CreateMonthsEntry(string text)
         {
-            var blocks = CreateDayTableEntry(text);
+            var blocks = CreateTableEntry(text);
             return new DtoCreator().CreateForMonth(blocks);
         }
 
-        private static List<Block> CreateDayTableEntry(string text)
+        public IEnumerable<Year> CreateYearsEntry(string text)
+        {
+            var blocks = CreateTableEntry(text);
+            return new DtoCreator().CreateForYear(blocks);
+        }
+
+        private static List<Block> CreateTableEntry(string text)
         {
             var lines = text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
             return CreateBlocks(lines.RemoveLast().TakeFrom(1));

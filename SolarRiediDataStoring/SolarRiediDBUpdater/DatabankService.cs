@@ -99,6 +99,29 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             }
         }
 
+        public void UpdateYear(string tableName, string filePrefix)
+        {
+            this.azureStorage.Init("mesiraziun");
+            var fileName = this
+                .azureStorage
+                .GetAllFiles(filePrefix)
+                .Single();
+
+            var deleteSqlCommand = new SqlCreator().CreateDelete(tableName);
+            this.dbConnection.RunSqlCommand(deleteSqlCommand, this.settingsProvider.GetDbConnectionString());
+
+            var text = GetExelFileAsString(fileName);
+            var entries = this.dataTableCreator.CreateYearsEntry(text);
+
+            foreach (var year in entries)
+            {
+                Console.WriteLine("Start insert month info {0}", year.Datum);
+                var sqlCommand = new SqlCreator().Create(tableName, year);
+                this.dbConnection.RunSqlCommand(sqlCommand, this.settingsProvider.GetDbConnectionString());
+                Console.WriteLine("Finish insert day info month {0}", year.Datum);
+            }
+        }
+
         private void DoUpdate(IEnumerable<string> fileNames, string tableName)
         {
             foreach (var fileName in fileNames)

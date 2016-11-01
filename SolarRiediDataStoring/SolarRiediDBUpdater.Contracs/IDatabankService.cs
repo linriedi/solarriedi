@@ -9,5 +9,7 @@
         void UpdateDays(string tableName, string filePrefix);
 
         void UpdateMonth(string tableName, string filePrefix);
+
+        void UpdateYear(string tableName, string filePrefix);
     }
 }

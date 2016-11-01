@@ -10,5 +10,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
         IEnumerable<Day> CreateDaysEntry(string text);
 
         IEnumerable<Month> CreateMonthsEntry(string text);
+
+        IEnumerable<Year> CreateYearsEntry(string text);
     }
 }
