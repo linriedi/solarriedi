@@ -8,6 +8,6 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
     {
         string Crete(string text);
         IEnumerable<FiveMinutes> CreateMinutesEntry(string text);
-        string CreteDeleteFrom(DateTimeOffset date);
+        string CreteDeleteFrom(string tableName, DateTimeOffset date);
     }
 }

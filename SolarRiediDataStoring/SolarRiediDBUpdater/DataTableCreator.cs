@@ -102,9 +102,9 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             return builder.ToString();
         }
 
-        public string CreteDeleteFrom(DateTimeOffset date)
+        public string CreteDeleteFrom(string tableName, DateTimeOffset date)
         {
-            return string.Format("Delete from testIndex where datum >= {0}", Time.ExtractDateTimeAsIntFromDateTime(date));
+            return string.Format("Delete from {0} where datum >= {1}", tableName, Time.ExtractDateTimeAsIntFromDateTime(date));
         }
     }
 }
