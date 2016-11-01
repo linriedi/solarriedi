@@ -16,7 +16,6 @@ namespace Linus.SolarRiedi.DataStoringService
             this.databankService = databankService;
         }
              
-
         public void StoreData()
         {
             Console.WriteLine("Start store data in service");

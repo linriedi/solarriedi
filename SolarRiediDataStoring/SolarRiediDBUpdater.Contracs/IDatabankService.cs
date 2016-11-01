@@ -11,6 +11,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater.Contracs
         void UpdateDatabank();
 
         void Insert(int date, int production, string messageText);
+
         void UpdateDatabankOfLastFourDays();
     }
 }

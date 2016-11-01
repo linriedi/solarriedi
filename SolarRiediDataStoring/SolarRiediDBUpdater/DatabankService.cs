@@ -107,7 +107,6 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
                 var entries = this.dataTableCreator.CreateMinutesEntry(text);
                 Console.WriteLine("Finish create entries for {0}", fileName);
 
-
                 Console.WriteLine("Start insert entries {0}", fileName);
                 this.Insert(entries);
                 Console.WriteLine("Finish create entries {0}", fileName);

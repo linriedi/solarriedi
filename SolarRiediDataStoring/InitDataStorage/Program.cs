@@ -1,7 +1,6 @@
 ﻿using Linus.SolarRiedi.AzureStorageService;
-using Linus.SolarRiedi.DbConnectionService;
+using Linus.SolarRiedi.FtpDownloader;
 using Linus.SolarRiedi.Settings;
-using Linus.SolarRiedi.SolarRiediDBUpdater;
 using System;
 
 namespace InitDataStorage
@@ -10,25 +9,28 @@ namespace InitDataStorage
     {
         static void Main(string[] args)
         {
-            var azureStorage = new StorageService(new SettingsProvider());
+            var settingsProvider = new SettingsProvider();
+            var azureStorage = new StorageService(settingsProvider);
 
-            //var ftpDownloader = new Linus.SolarRiedi.FtpDownloader.FtpDownlaoder(
-            //        azureStorage,
-            //        new SettingsProvider());
-
-            //Console.WriteLine("Start download min files");
-            //ftpDownloader.DownLoad("mesiraziun", "min");
-            //Console.WriteLine("Finished dosnload min files");
-
-            var databank = new DatabankService(
-                    new SettingsProvider(),
+            var ftpDownloader = new FtpDownlaoder(
                     azureStorage,
-                    new ConnectionService(),
-                    DatabankServiceModule.DataTableCreator);
+                    settingsProvider);
 
-            Console.WriteLine("Start full update");
-            databank.FullUpdate();
-            Console.WriteLine("Finish full update");
+            Console.WriteLine("Start download min files");
+            ftpDownloader.DownLoad("mesiraziun", "min");
+            Console.WriteLine("Finished dosnload min files");
+
+            Console.WriteLine("Start download days files");
+            ftpDownloader.DownLoad("mesiraziun", "days");
+            Console.WriteLine("Finished dosnload days files");
+
+            Console.WriteLine("Start download month files");
+            ftpDownloader.DownLoad("mesiraziun", "month");
+            Console.WriteLine("Finished dosnload month files");
+
+            Console.WriteLine("Start download year files");
+            ftpDownloader.DownLoad("mesiraziun", "year");
+            Console.WriteLine("Finished dosnload year files");
         }
     }
 }
