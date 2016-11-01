@@ -89,7 +89,6 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
                 Console.WriteLine("Start insert entries {0}", fileName);
 
                 var before = DateTime.Now;
-                //this.InsertWithOneCommand(entries);
                 this.InsertWithCommandPerEntry(tableName, entries);
 
                 Console.WriteLine("took time {0}: ", DateTime.Now - before);
@@ -97,18 +96,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
                 Console.WriteLine("Finish create entries {0}", fileName);
             }
         }
-
-        private void InsertWithOneCommand(string tableName, IEnumerable<FiveMinutes> fiveMinutes)
-        {
-            Console.WriteLine("Start create sqlCommand");
-            var sqlCommand = new SqlCreator().Create(tableName, fiveMinutes);
-            Console.WriteLine("Finish create sqlCommand");
-
-            Console.WriteLine("Start run sqlCommand");
-            this.dbConnection.Insert(sqlCommand, this.settingsProvider.GetDbConnectionString());
-            Console.WriteLine("Finish run sqlCommand");
-        }
-
+               
         private void InsertWithCommandPerEntry(string tableName, IEnumerable<FiveMinutes> fiveMinutes)
         {
             foreach(var minute in fiveMinutes)
