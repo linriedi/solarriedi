@@ -7,5 +7,7 @@
         void UpdateDatabankOfLastFourDays(string tableName, string filePrefix);
 
         void UpdateDays(string tableName, string filePrefix);
+
+        void UpdateMonth(string tableName, string filePrefix);
     }
 }

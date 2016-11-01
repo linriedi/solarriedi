@@ -76,6 +76,10 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             }
         }
 
+        public void UpdateMonth(string tableName, string filePrefix)
+        {
+        }
+
         private void DoUpdate(IEnumerable<string> fileNames, string tableName)
         {
             foreach (var fileName in fileNames)

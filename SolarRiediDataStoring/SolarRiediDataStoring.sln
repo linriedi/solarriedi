@@ -40,6 +40,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{06398A36-D2D7-4200-95E8-FD84F930DF24}"
 	ProjectSection(SolutionItems) = preProject
 		CreateGis.sql = CreateGis.sql
+		CreateMeins.sql = CreateMeins.sql
 		CreateMinutas.sql = CreateMinutas.sql
 		Delete.sql = Delete.sql
 		Select.sql = Select.sql

@@ -20,13 +20,15 @@ namespace Linus.SolarRiedi.DataStoringService
         {
             Console.WriteLine("Start store data for the last four days in service");
 
-            this.ftpDownlaoder.DownLoadOfLastFourDays("mesiraziun", filePrefix);
-            this.databankService.UpdateDatabankOfLastFourDays(tableName, filePrefix);
+            //this.ftpDownlaoder.DownLoadOfLastFourDays("mesiraziun", filePrefix);
+            //this.databankService.UpdateDatabankOfLastFourDays(tableName, filePrefix);
 
-            this.ftpDownlaoder.DownLoad("mesiraziun", "days");
-            this.databankService.UpdateDays("gis", "days");
+            //this.ftpDownlaoder.DownLoad("mesiraziun", "days");
+            //this.databankService.UpdateDays("gis", "days");
 
             this.ftpDownlaoder.DownLoad("mesiraziun", "month");
+            this.databankService.UpdateMonth("meins", "month");
+
             this.ftpDownlaoder.DownLoad("mesiraziun", "year");
 
             Console.WriteLine("End store data for the last four days in service");
