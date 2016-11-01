@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
-using Common;
 
 namespace Linus.SolarRiedi.SolarRiediDBUpdater
 {
@@ -44,11 +43,6 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
                 }
             };
             return table;
-        }
-                
-        public string CreteDeleteFrom(string tableName, DateTimeOffset date)
-        {
-            return string.Format("Delete from {0} where datum >= {1}", tableName, Time.ExtractDateTimeAsIntFromDateTime(date));
         }
     }
 }

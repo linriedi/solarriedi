@@ -1,10 +1,17 @@
 ﻿using System.Text;
 using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
+using System;
+using Common;
 
 namespace Linus.SolarRiedi.SolarRiediDBUpdater
 {
     public class SqlCreator
     {
+        public string CreteDeleteFrom(string tableName, DateTimeOffset date)
+        {
+            return string.Format("Delete from {0} where datum >= {1}", tableName, Time.ExtractDateTimeAsIntFromDateTime(date));
+        }
+
         public string Create(string tableName, FiveMinutes fiveMinutes)
         {
             var builder = new StringBuilder();
