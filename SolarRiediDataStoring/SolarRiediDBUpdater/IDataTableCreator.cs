@@ -6,7 +6,6 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 {
     public interface IDataTableCreator
     {
-        string Crete(string text);
         IEnumerable<FiveMinutes> CreateMinutesEntry(string text);
         string CreteDeleteFrom(string tableName, DateTimeOffset date);
     }
