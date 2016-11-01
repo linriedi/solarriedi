@@ -49,7 +49,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             var date = Time.CreateDateTimeFromFileName(fileNames.First());
             var sqlCommand = this.dataTableCreator.CreteDeleteFrom(tableName, date);
 
-            this.dbConnection.Insert(sqlCommand, this.settingsProvider.GetDbConnectionString());
+            this.dbConnection.RunSqlCommand(sqlCommand, this.settingsProvider.GetDbConnectionString());
             this.DoUpdate(fileNames, tableName);
         }
 
@@ -79,7 +79,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             foreach(var minute in fiveMinutes)
             {
                 var sqlCommand = new SqlCreator().Create(tableName, minute);
-                this.dbConnection.Insert(sqlCommand, this.settingsProvider.GetDbConnectionString());
+                this.dbConnection.RunSqlCommand(sqlCommand, this.settingsProvider.GetDbConnectionString());
             }
         }
 

@@ -2,7 +2,6 @@
 {
     public interface IDbConnection
     {
-        void Insert(string insertString, string connectionString);
-        void DeleteItemsInTable(string connectionString);
+        void RunSqlCommand(string sqlCommand, string connectionString);
     }
 }
