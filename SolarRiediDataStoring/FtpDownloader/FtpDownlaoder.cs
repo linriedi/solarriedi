@@ -1,7 +1,7 @@
-﻿using ArxOne.Ftp;
-using Common;
+﻿using Common;
 using Linus.SolarRiedi.AzureStorageWrapper.Contracts;
 using Linus.SolarRiedi.FtpDownloader.Contracs;
+using Linus.SolarRiedi.FtpWrapper.Contracts;
 using Linus.SolarRiedi.Settings.Contracts;
 using System;
 using System.Linq;
@@ -11,11 +11,16 @@ namespace Linus.SolarRiedi.FtpDownloader
     public class FtpDownlaoder : IFtpDownloader
     {
         private readonly IAzureStorage azureStorage;
+        private readonly IFtpWrapperFactory ftpWrapperFactory;
         private readonly ISettingsProvider settingsProvider;
 
-        public FtpDownlaoder(IAzureStorage azureStorage, ISettingsProvider settingsProvider)
+        public FtpDownlaoder(
+            IAzureStorage azureStorage,
+            IFtpWrapperFactory ftpWrapperFactory,
+            ISettingsProvider settingsProvider)
         {
             this.settingsProvider = settingsProvider;
+            this.ftpWrapperFactory = ftpWrapperFactory;
             this.azureStorage = azureStorage;
         }
 
@@ -41,22 +46,20 @@ namespace Linus.SolarRiedi.FtpDownloader
             var credentials = this.settingsProvider.GetFtpCredentials();
 
             Console.WriteLine("Start download of files");
-                      
-            using (var ftpClient = new FtpClient(uri, credentials))
+            
+            using (var ftpClient = this.ftpWrapperFactory.Create(uri, credentials))
             {
-                var allFiles = ftpClient
-                    .ListEntries("");
+                var allFiles = ftpClient.GetFilesNames();
+                var fileNames = filter.Filter(allFiles);
 
-                var fileList = filter.Filter(allFiles);
-                
-                foreach (var file in fileList)
+                foreach (var fileName in fileNames)
                 {
-                    Console.WriteLine("download and save file {0}", file.Name);
+                    Console.WriteLine("download and save file {0}", fileName);
 
-                    var stream = ftpClient.Retr(file.Name);
-                    this.azureStorage.UploadFromStream(stream, containerName, file.Name);
+                    var stream = ftpClient.GetStream(fileName);
+                    this.azureStorage.UploadFromStream(stream, containerName, fileName);
 
-                    Console.WriteLine("SUCCESSFULLY downloaded and save file {0}", file.Name);
+                    Console.WriteLine("SUCCESSFULLY downloaded and save file {0}", fileName);
                 }
             }
 

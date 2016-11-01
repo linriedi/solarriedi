@@ -91,6 +91,10 @@
       <Project>{6d4b3a6e-590b-4846-a9fe-3c841a08b275}</Project>
       <Name>FtpDownloader.Contracs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FtpWrapper.Contracts\FtpWrapper.Contracts.csproj">
+      <Project>{7b1baf88-55ee-46e1-b2fa-a888afb8bc5e}</Project>
+      <Name>FtpWrapper.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Settings.Contracts\Settings.Contracts.csproj">
       <Project>{0cee89c3-777b-40fc-9e79-b0218a84cb6e}</Project>
       <Name>Settings.Contracts</Name>

@@ -1,6 +1,7 @@
 ﻿using Linus.SolarRiedi.AzureStorageService;
 using Linus.SolarRiedi.DataStoringService;
 using Linus.SolarRiedi.DbConnectionService;
+using Linus.SolarRiedi.FtpWrapperService;
 using Linus.SolarRiedi.Settings;
 using Linus.SolarRiedi.SolarRiediDBUpdater;
 using Microsoft.Azure.WebJobs;
@@ -22,6 +23,7 @@ namespace Linus.SolarRiedi.DataStoringJob
             var service = new Service(
                 new FtpDownloader.FtpDownlaoder(
                     azureStorage,
+                    new FtpWrapperFactory(),
                     new SettingsProvider()),
                 new DatabankService(
                     new SettingsProvider(),

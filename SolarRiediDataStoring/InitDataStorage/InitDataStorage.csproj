@@ -82,6 +82,14 @@
       <Project>{6583d95b-508f-425d-b5b4-4a7070c948f5}</Project>
       <Name>FtpDownloader</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FtpWrapper.Contracts\FtpWrapper.Contracts.csproj">
+      <Project>{7b1baf88-55ee-46e1-b2fa-a888afb8bc5e}</Project>
+      <Name>FtpWrapper.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FtpWrapperService\FtpWrapperService.csproj">
+      <Project>{2B9C5103-2F42-46C3-BDA2-27AD61D45868}</Project>
+      <Name>FtpWrapperService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Settings.Contracts\Settings.Contracts.csproj">
       <Project>{0cee89c3-777b-40fc-9e79-b0218a84cb6e}</Project>
       <Name>Settings.Contracts</Name>

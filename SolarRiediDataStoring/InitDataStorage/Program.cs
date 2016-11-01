@@ -1,5 +1,6 @@
 ﻿using Linus.SolarRiedi.AzureStorageService;
 using Linus.SolarRiedi.FtpDownloader;
+using Linus.SolarRiedi.FtpWrapperService;
 using Linus.SolarRiedi.Settings;
 using System;
 
@@ -14,6 +15,7 @@ namespace InitDataStorage
 
             var ftpDownloader = new FtpDownlaoder(
                     azureStorage,
+                    new FtpWrapperFactory(),
                     settingsProvider);
 
             Console.WriteLine("Start download min files");

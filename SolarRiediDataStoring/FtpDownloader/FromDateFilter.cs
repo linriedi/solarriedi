@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ArxOne.Ftp;
 using System.Linq;
 using Common;
 
@@ -17,11 +16,11 @@ namespace Linus.SolarRiedi.FtpDownloader
             this.fromDate = fromDate;
         }
 
-        public IEnumerable<FtpEntry> Filter(IEnumerable<FtpEntry> inputList)
+        public IEnumerable<string> Filter(IEnumerable<string> inputList)
         {
             return inputList
-                .Where(file => file.Name.Contains(this.filePrefix))
-                .Where(file => Time.CreateDateTimeFromFileName(file.Name) >= this.fromDate);
+                .Where(file => file.Contains(this.filePrefix))
+                .Where(file => Time.CreateDateTimeFromFileName(file) >= this.fromDate);
         }
     }
 }

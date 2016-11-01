@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ArxOne.Ftp;
 using System.Linq;
 
 namespace Linus.SolarRiedi.FtpDownloader
@@ -13,10 +12,10 @@ namespace Linus.SolarRiedi.FtpDownloader
             this.filePrefix = filePrefix;
         }
 
-        public IEnumerable<FtpEntry> Filter(IEnumerable<FtpEntry> inputList)
+        public IEnumerable<string> Filter(IEnumerable<string> inputList)
         {
             return inputList
-                .Where(file => file.Name.Contains(this.filePrefix));
+                .Where(file => file.Contains(this.filePrefix));
         }
     }
 }
