@@ -89,6 +89,14 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 
             var text = GetExelFileAsString(fileName);
             var entries = this.dataTableCreator.CreateMonthsEntry(text);
+
+            foreach (var month in entries)
+            {
+                Console.WriteLine("Start insert month info {0}", month.Datum);
+                var sqlCommand = new SqlCreator().Create(tableName, month);
+                this.dbConnection.RunSqlCommand(sqlCommand, this.settingsProvider.GetDbConnectionString());
+                Console.WriteLine("Finish insert day info month {0}", month.Datum);
+            }
         }
 
         private void DoUpdate(IEnumerable<string> fileNames, string tableName)

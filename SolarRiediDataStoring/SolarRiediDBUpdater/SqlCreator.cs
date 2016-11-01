@@ -43,6 +43,11 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             return builder.ToString();
         }
 
+        public string Create(string tableName, Month month)
+        {
+            return null;
+        }
+
         private void AppendValues(Day day, StringBuilder builder)
         {
             builder.Append(day.Datum);
