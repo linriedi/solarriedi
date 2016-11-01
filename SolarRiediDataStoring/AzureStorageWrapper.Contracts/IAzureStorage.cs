@@ -5,9 +5,8 @@ namespace Linus.SolarRiedi.AzureStorageWrapper.Contracts
 {
     public interface IAzureStorage
     {
-        void Init(string container);
-        void UploadFromStream(Stream stream, string fileName);
-        void GetStream(string fileName, Stream stream);
-        IEnumerable<string> GetAllFiles(string filePrefix);
+        void UploadFromStream(Stream stream, string containerName, string fileName);
+        IEnumerable<string> GetAllFiles(string containerName, string filePrefix);
+        string GetCsvAsString(string fileName);
     }
 }

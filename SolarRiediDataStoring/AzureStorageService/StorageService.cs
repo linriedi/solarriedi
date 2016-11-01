@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Linus.SolarRiedi.AzureStorageWrapper.Contracts;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Linus.SolarRiedi.Settings.Contracts;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Linus.SolarRiedi.AzureStorageService
 {
@@ -18,34 +18,47 @@ namespace Linus.SolarRiedi.AzureStorageService
         {
             this.settingsProvider = settingsProvider;
         }
-
-        public void Init(string containerName)
+              
+        public void UploadFromStream(Stream stream, string containerName, string fileName)
         {
-            //var storageAccount = CloudStorageAccount.Parse("");
+            this.Init(containerName);
+            var blockBlob = this.container.GetBlockBlobReference(fileName);
+            blockBlob.UploadFromStream(stream);
+        }
+
+        public IEnumerable<string> GetAllFiles(string containerName, string filePrefix)
+        {
+            this.Init(containerName);
+            return this.container
+                .ListBlobs()
+                .Select(b => Path.GetFileName(b.Uri.LocalPath))
+                .Where(bs => bs.Contains(filePrefix));
+        }
+
+        public string GetCsvAsString(string fileName)
+        {
+            var text = string.Empty;
+            using (var memoryStream = new MemoryStream())
+            {
+                this.GetStream(fileName, memoryStream);
+                text = Encoding.UTF8.GetString(memoryStream.ToArray());
+            }
+
+            return text;
+        }
+
+        private void Init(string containerName)
+        {
             var storageAccount = CloudStorageAccount.Parse(this.settingsProvider.GetStorageConnectionString());
             var blobClient = storageAccount.CreateCloudBlobClient();
             this.container = blobClient.GetContainerReference(containerName);
             this.container.CreateIfNotExists();
         }
 
-        public void UploadFromStream(Stream stream, string fileName)
-        {
-            var blockBlob = this.container.GetBlockBlobReference(fileName);
-            blockBlob.UploadFromStream(stream);
-        }
-
-        public void GetStream(string fileName, Stream stream)
+        private void GetStream(string fileName, Stream stream)
         {
             var blob = this.container.GetBlockBlobReference(fileName);
             blob.DownloadToStream(stream);
-        }
-
-        public IEnumerable<string> GetAllFiles(string filePrefix)
-        {
-            return this.container
-                .ListBlobs()
-                .Select(b => Path.GetFileName(b.Uri.LocalPath))
-                .Where(bs => bs.Contains(filePrefix));
         }
     }
 }

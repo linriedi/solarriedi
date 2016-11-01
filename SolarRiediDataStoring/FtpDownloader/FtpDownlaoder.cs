@@ -26,8 +26,7 @@ namespace Linus.SolarRiedi.FtpDownloader
                 
         public void DownLoadOfLastFourDays(string containerName, string filePrefix)
         {
-            this.azureStorage.Init(containerName);
-            var files = this.azureStorage.GetAllFiles(filePrefix);
+            var files = this.azureStorage.GetAllFiles(containerName, filePrefix);
 
             var last = files.Last(file => file.Contains(filePrefix));
             var lastFileDateTime = Time.CreateDateTimeFromFileName(last);
@@ -42,9 +41,7 @@ namespace Linus.SolarRiedi.FtpDownloader
             var credentials = this.settingsProvider.GetFtpCredentials();
 
             Console.WriteLine("Start download of files");
-
-            this.azureStorage.Init(containerName);
-
+                      
             using (var ftpClient = new FtpClient(uri, credentials))
             {
                 var allFiles = ftpClient
@@ -57,7 +54,7 @@ namespace Linus.SolarRiedi.FtpDownloader
                     Console.WriteLine("download and save file {0}", file.Name);
 
                     var stream = ftpClient.Retr(file.Name);
-                    this.azureStorage.UploadFromStream(stream, file.Name);
+                    this.azureStorage.UploadFromStream(stream, containerName, file.Name);
 
                     Console.WriteLine("SUCCESSFULLY downloaded and save file {0}", file.Name);
                 }

@@ -32,18 +32,15 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 
         public void FullUpdateOnTable(string tableName, string filePrefix)
         {
-            this.azureStorage.Init("mesiraziun");
-            var fileNames = this.azureStorage.GetAllFiles(filePrefix);
-
+            var fileNames = this.azureStorage.GetAllFiles("mesiraziun", filePrefix);
             DoUpdate(fileNames, tableName);
         }
 
         public void UpdateDatabankOfLastFourDays(string tableName, string filePrefix)
         {
-            this.azureStorage.Init("mesiraziun");
             var fileNames = this
                 .azureStorage
-                .GetAllFiles(filePrefix)
+                .GetAllFiles("mesiraziun", filePrefix)
                 .LastFour();
 
             var date = Time.CreateDateTimeFromFileName(fileNames.First());
@@ -55,16 +52,15 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 
         public void UpdateDays(string tableName, string filePrefix)
         {
-            this.azureStorage.Init("mesiraziun");
             var fileName = this
                 .azureStorage
-                .GetAllFiles(filePrefix)
+                .GetAllFiles("mesiraziun", filePrefix)
                 .Single();
 
             var deleteSqlCommand = new SqlCreator().CreateDelete(tableName);
             this.dbConnection.RunSqlCommand(deleteSqlCommand, this.settingsProvider.GetDbConnectionString());
 
-            var text = GetExelFileAsString(fileName);
+            var text = this.azureStorage.GetCsvAsString(fileName);
             var entries = this.dataTableCreator.CreateDaysEntry(text);
 
             foreach(var day in entries)
@@ -78,16 +74,15 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 
         public void UpdateMonth(string tableName, string filePrefix)
         {
-            this.azureStorage.Init("mesiraziun");
             var fileName = this
                 .azureStorage
-                .GetAllFiles(filePrefix)
+                .GetAllFiles("mesiraziun", filePrefix)
                 .Single();
 
             var deleteSqlCommand = new SqlCreator().CreateDelete(tableName);
             this.dbConnection.RunSqlCommand(deleteSqlCommand, this.settingsProvider.GetDbConnectionString());
 
-            var text = GetExelFileAsString(fileName);
+            var text = this.azureStorage.GetCsvAsString(fileName);
             var entries = this.dataTableCreator.CreateMonthsEntry(text);
 
             foreach (var month in entries)
@@ -101,16 +96,15 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 
         public void UpdateYear(string tableName, string filePrefix)
         {
-            this.azureStorage.Init("mesiraziun");
             var fileName = this
                 .azureStorage
-                .GetAllFiles(filePrefix)
+                .GetAllFiles("mesiraziun", filePrefix)
                 .Single();
 
             var deleteSqlCommand = new SqlCreator().CreateDelete(tableName);
             this.dbConnection.RunSqlCommand(deleteSqlCommand, this.settingsProvider.GetDbConnectionString());
 
-            var text = GetExelFileAsString(fileName);
+            var text = this.azureStorage.GetCsvAsString(fileName);
             var entries = this.dataTableCreator.CreateYearsEntry(text);
 
             foreach (var year in entries)
@@ -126,7 +120,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
         {
             foreach (var fileName in fileNames)
             {
-                var text = GetExelFileAsString(fileName);
+                var text = this.azureStorage.GetCsvAsString(fileName);
 
                 Console.WriteLine("Start create entries for {0}", fileName);
                 var entries = this.dataTableCreator.CreateMinutesEntry(text);
@@ -150,18 +144,6 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
                 var sqlCommand = new SqlCreator().Create(tableName, minute);
                 this.dbConnection.RunSqlCommand(sqlCommand, this.settingsProvider.GetDbConnectionString());
             }
-        }
-
-        private string GetExelFileAsString(string fileName)
-        {
-            var text = string.Empty;
-            using (var memoryStream = new MemoryStream())
-            {
-                this.azureStorage.GetStream(fileName, memoryStream);
-                text = Encoding.UTF8.GetString(memoryStream.ToArray());
-            }
-
-            return text;
         }
     }
 }
