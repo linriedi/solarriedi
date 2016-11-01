@@ -78,6 +78,17 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 
         public void UpdateMonth(string tableName, string filePrefix)
         {
+            this.azureStorage.Init("mesiraziun");
+            var fileName = this
+                .azureStorage
+                .GetAllFiles(filePrefix)
+                .Single();
+
+            var deleteSqlCommand = new SqlCreator().CreateDelete(tableName);
+            this.dbConnection.RunSqlCommand(deleteSqlCommand, this.settingsProvider.GetDbConnectionString());
+
+            var text = GetExelFileAsString(fileName);
+            var entries = this.dataTableCreator.CreateMonthsEntry(text);
         }
 
         private void DoUpdate(IEnumerable<string> fileNames, string tableName)

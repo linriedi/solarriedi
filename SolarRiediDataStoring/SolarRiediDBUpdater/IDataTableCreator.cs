@@ -8,5 +8,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
         IEnumerable<FiveMinutes> CreateMinutesEntry(string text);
 
         IEnumerable<Day> CreateDaysEntry(string text);
+
+        IEnumerable<Month> CreateMonthsEntry(string text);
     }
 }
