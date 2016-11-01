@@ -29,18 +29,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             this.dbConnection = dbConnection;
             this.dataTableCreator = dataTableCreator;
         }     
-
-        public void Insert(IEnumerable<FiveMinutes> fiveMinutes)
-        {
-            Console.WriteLine("Start create sqlCommand");
-            var sqlCommand = new SqlCreator().Create(fiveMinutes);
-            Console.WriteLine("Finish create sqlCommand");
-
-            Console.WriteLine("Start run sqlCommand");
-            this.dbConnection.Insert(sqlCommand, this.settingsProvider.GetDbConnectionString());
-            Console.WriteLine("Finish run sqlCommand");
-        }
-
+              
         public void Insert(int date, int production, string messageText)
         {
             for(int i = 0; i < 100; i++)
@@ -58,7 +47,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             this.azureStorage.Init("mesiraziun");
 
             this.dbConnection.DeleteItemsInTable(this.settingsProvider.GetDbConnectionString());
-            var fileNames = this.azureStorage.GetAllFiles();
+            var fileNames = this.azureStorage.GetAllFiles("min");
             foreach (var fileName in fileNames)
             {
                 Console.WriteLine("Start insert measurments for file {0}", fileName);
@@ -77,7 +66,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
         public void FullUpdate()
         {
             this.azureStorage.Init("mesiraziun");
-            var fileNames = this.azureStorage.GetAllFiles();
+            var fileNames = this.azureStorage.GetAllFiles("min");
 
             DoUpdate(fileNames);
         }
@@ -87,7 +76,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             this.azureStorage.Init("mesiraziun");
             var fileNames = this
                 .azureStorage
-                .GetAllFiles()
+                .GetAllFiles("min")
                 .LastFour();
 
             var date = Time.CreateDateTimeFromFileName(fileNames.First());
@@ -108,8 +97,34 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
                 Console.WriteLine("Finish create entries for {0}", fileName);
 
                 Console.WriteLine("Start insert entries {0}", fileName);
-                this.Insert(entries);
+
+                var before = DateTime.Now;
+                //this.InsertWithOneCommand(entries);
+                this.InsertWithCommandPerEntry(entries);
+
+                Console.WriteLine("took time {0}: ", DateTime.Now - before);
+
                 Console.WriteLine("Finish create entries {0}", fileName);
+            }
+        }
+
+        private void InsertWithOneCommand(IEnumerable<FiveMinutes> fiveMinutes)
+        {
+            Console.WriteLine("Start create sqlCommand");
+            var sqlCommand = new SqlCreator().Create(fiveMinutes);
+            Console.WriteLine("Finish create sqlCommand");
+
+            Console.WriteLine("Start run sqlCommand");
+            this.dbConnection.Insert(sqlCommand, this.settingsProvider.GetDbConnectionString());
+            Console.WriteLine("Finish run sqlCommand");
+        }
+
+        private void InsertWithCommandPerEntry(IEnumerable<FiveMinutes> fiveMinutes)
+        {
+            foreach(var minute in fiveMinutes)
+            {
+                var sqlCommand = new SqlCreator().Create(new List<FiveMinutes> { minute });
+                this.dbConnection.Insert(sqlCommand, this.settingsProvider.GetDbConnectionString());
             }
         }
 

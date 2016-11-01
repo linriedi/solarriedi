@@ -8,6 +8,6 @@ namespace Linus.SolarRiedi.AzureStorageWrapper.Contracts
         void Init(string container);
         void UploadFromStream(Stream stream, string fileName);
         void GetStream(string fileName, Stream stream);
-        IEnumerable<string> GetAllFiles();
+        IEnumerable<string> GetAllFiles(string filePrefix);
     }
 }

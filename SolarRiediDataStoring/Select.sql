@@ -1,1 +1,1 @@
-﻿Select * from testIndex where datum >= 1610122350 and datum < 1610130010
+﻿Select * from testIndex

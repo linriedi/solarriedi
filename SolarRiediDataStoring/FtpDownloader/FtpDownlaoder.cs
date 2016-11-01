@@ -27,7 +27,7 @@ namespace Linus.SolarRiedi.FtpDownloader
         public void DownLoadOfLastFourDays(string containerName, string filePrefix)
         {
             this.azureStorage.Init(containerName);
-            var files = this.azureStorage.GetAllFiles();
+            var files = this.azureStorage.GetAllFiles(filePrefix);
 
             var last = files.Last(file => file.Contains(filePrefix));
             var lastFileDateTime = Time.CreateDateTimeFromFileName(last);

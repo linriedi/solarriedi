@@ -40,11 +40,12 @@ namespace Linus.SolarRiedi.AzureStorageService
             blob.DownloadToStream(stream);
         }
 
-        public IEnumerable<string> GetAllFiles()
+        public IEnumerable<string> GetAllFiles(string filePrefix)
         {
             return this.container
                 .ListBlobs()
-                .Select(b => Path.GetFileName(b.Uri.LocalPath));
+                .Select(b => Path.GetFileName(b.Uri.LocalPath))
+                .Where(bs => bs.Contains(filePrefix));
         }
     }
 }
