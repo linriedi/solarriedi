@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="jumbotron">
+        <measurementForm [measurementItem]="measurementSelectedFromList" (measurementUpdated)="updateMeasurement($event)" (measurementAdded)="addMeasurement($event)"></measurementForm>
+        <br/>
+        <measurementList [measurements]="measurements" (measurementSelected)="setCurrentlySelectedMeasurement($event)" (measurementDeleted)="deleteMeasurement($event)"></measurementList>
+    </div>
+</div>

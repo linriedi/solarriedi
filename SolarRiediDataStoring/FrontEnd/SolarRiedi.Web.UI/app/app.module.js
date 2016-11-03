@@ -22,8 +22,13 @@ var mainFood_component_1 = require('./components/mainFood/mainFood.component');
 var foodDetails_component_1 = require('./components/foodDetails/foodDetails.component');
 var foodList_component_1 = require('./components/foodList/foodList.component');
 var foodForm_component_1 = require('./components/foodForm/foodForm.component');
+var mainMeasurement_component_1 = require('./components/mainMeasurement/mainMeasurement.component');
+var measurementDetails_component_1 = require('./components/measurementDetails/measurementDetails.component');
+var measurementList_component_1 = require('./components/measurementList/measurementList.component');
+var measurementForm_component_1 = require('./components/measurementForm/measurementForm.component');
 var navigation_component_1 = require('./components/navigation/navigation.component');
 var food_dataservice_1 = require('./shared/food.dataservice');
+var measurement_dataservice_1 = require('./shared/measurement.dataservice');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -44,11 +49,16 @@ var AppModule = (function () {
                 foodDetails_component_1.FoodDetailsComponent,
                 foodList_component_1.FoodListComponent,
                 foodForm_component_1.FoodFormComponent,
+                mainMeasurement_component_1.MainMeasurementComponent,
+                measurementDetails_component_1.MeasurementDetailsComponent,
+                measurementList_component_1.MeasurementListComponent,
+                measurementForm_component_1.MeasurementFormComponent,
                 navigation_component_1.NavigationComponent
             ],
             providers: [
                 app_configuration_1.Configuration,
-                food_dataservice_1.FoodDataService
+                food_dataservice_1.FoodDataService,
+                measurement_dataservice_1.MeasurementDataService,
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

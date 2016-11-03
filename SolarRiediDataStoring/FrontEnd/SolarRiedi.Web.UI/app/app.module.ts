@@ -13,10 +13,14 @@ import { MainFoodComponent } from  './components/mainFood/mainFood.component';
 import { FoodDetailsComponent } from './components/foodDetails/foodDetails.component';
 import { FoodListComponent } from './components/foodList/foodList.component';
 import { FoodFormComponent } from './components/foodForm/foodForm.component';
+import { MainMeasurementComponent } from  './components/mainMeasurement/mainMeasurement.component';
+import { MeasurementDetailsComponent } from './components/measurementDetails/measurementDetails.component';
+import { MeasurementListComponent } from './components/measurementList/measurementList.component';
+import { MeasurementFormComponent } from './components/measurementForm/measurementForm.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 
 import { FoodDataService } from './shared/food.dataservice';
-
+import { MeasurementDataService } from './shared/measurement.dataservice';
 
 @NgModule({
     imports: [
@@ -35,12 +39,17 @@ import { FoodDataService } from './shared/food.dataservice';
         FoodDetailsComponent,
         FoodListComponent,
         FoodFormComponent,
+        MainMeasurementComponent,
+        MeasurementDetailsComponent,
+        MeasurementListComponent,
+        MeasurementFormComponent,
         NavigationComponent
     ],
 
     providers: [
         Configuration,
-        FoodDataService
+        FoodDataService,
+        MeasurementDataService,
     ],
 
     bootstrap: [AppComponent]
