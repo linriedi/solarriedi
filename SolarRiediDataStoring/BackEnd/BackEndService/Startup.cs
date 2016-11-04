@@ -1,5 +1,7 @@
 ﻿using Linus.SolarRiedi.BackEnd.BL;
 using Linus.SolarRiedi.BackEnd.Contracts;
+using Linus.SolarRiedi.BackEnd.DataAccess;
+using Linus.SolarRiedi.BackEnd.DataAccess.Contracts;
 using Linus.SolarRiedi.BackEnd.Service.Models;
 using Linus.SolarRiedi.BackEnd.Service.Repositories;
 using Linus.SolarRiedi.BackEnd.Service.ViewModels;
@@ -46,6 +48,7 @@ namespace FoodAPICore
 
             services.AddSingleton<IMeasurementRepository, MeasurementRepository>();
             services.AddSingleton<IMonthService, MonthService>();
+            services.AddSingleton<IDataAccess, DataAccess>();
             services.AddMvc();
         }
 

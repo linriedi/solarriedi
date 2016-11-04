@@ -13,7 +13,9 @@
     "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
     "BackEnd.BL": "1.0.0-*",
-    "BackEnd.Contracts": "1.0.0-*" 
+    "BackEnd.Contracts": "1.0.0-*",
+    "BackEnd.DataAccess": "1.0.0-*",
+    "BackEnd.DataAccess.Contracts": "1.0.0-*" 
   },
 
   "tools": {
