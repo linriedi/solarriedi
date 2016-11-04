@@ -1,10 +1,12 @@
-﻿using Linus.SolarRiedi.BackEnd.BL;
+﻿using Linus.SolarRiedi.DBConnection;
+using Linus.SolarRiedi.BackEnd.BL;
 using Linus.SolarRiedi.BackEnd.Contracts;
 using Linus.SolarRiedi.BackEnd.DataAccess;
 using Linus.SolarRiedi.BackEnd.DataAccess.Contracts;
 using Linus.SolarRiedi.BackEnd.Service.Models;
 using Linus.SolarRiedi.BackEnd.Service.Repositories;
 using Linus.SolarRiedi.BackEnd.Service.ViewModels;
+using Linus.SolarRiedi.DBConnection.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -49,6 +51,7 @@ namespace FoodAPICore
             services.AddSingleton<IMeasurementRepository, MeasurementRepository>();
             services.AddSingleton<IMonthService, MonthService>();
             services.AddSingleton<IDataAccess, DataAccess>();
+            services.AddSingleton<IRunSqlCommand, RunSqlCommand>();
             services.AddMvc();
         }
 

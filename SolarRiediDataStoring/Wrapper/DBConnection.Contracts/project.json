@@ -1,9 +1,7 @@
-{
+﻿{
   "version": "1.0.0-*",
 
   "dependencies": {
-    "BackEnd.DataAccess.Contracts": "1.0.0-*",
-    "DBConnection.Contracts": "1.0.0-*",
     "NETStandard.Library": "1.6.0"
   },
 

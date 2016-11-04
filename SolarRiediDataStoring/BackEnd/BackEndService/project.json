@@ -15,7 +15,9 @@
     "BackEnd.BL": "1.0.0-*",
     "BackEnd.Contracts": "1.0.0-*",
     "BackEnd.DataAccess": "1.0.0-*",
-    "BackEnd.DataAccess.Contracts": "1.0.0-*" 
+    "BackEnd.DataAccess.Contracts": "1.0.0-*",
+    "DBConnection": "1.0.0-*",
+    "DBConnection.Contracts": "1.0.0-*" 
   },
 
   "tools": {
