@@ -1,4 +1,5 @@
 ﻿using Linus.SolarRiedi.ConnectionWrapper.Contracts;
+using System;
 using System.Data.SqlClient;
 
 namespace Linus.SolarRiedi.DbConnectionService
