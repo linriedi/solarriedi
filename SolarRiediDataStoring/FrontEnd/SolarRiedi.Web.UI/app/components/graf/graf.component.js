@@ -16,10 +16,10 @@ var graf_dataservice_1 = require('../../shared/graf.dataservice');
 var GrafComponent = (function () {
     function GrafComponent(dataSvc) {
         this.countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
-        this.someText = 'Hy from component';
         // data for FlexChart
         this.dataSvc = dataSvc;
         this.data = this.dataSvc.getData(this.countries);
+        this.someText = this.dataSvc.getSomeText();
     }
     GrafComponent.prototype.ngOnInit = function () {
     };

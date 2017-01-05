@@ -11,12 +11,14 @@ export class GrafComponent implements OnInit {
     data: { country: string, downloads: number, sales: number, expenses: number }[];
     protected dataSvc: DataSvc;
 
-    public someText: string = 'Hy from component';
+    public someText: string;
 
     constructor( @Inject(DataSvc) dataSvc: DataSvc) {
         // data for FlexChart
         this.dataSvc = dataSvc;
         this.data = this.dataSvc.getData(this.countries);
+
+        this.someText = this.dataSvc.getSomeText();
     }
 
     ngOnInit() {

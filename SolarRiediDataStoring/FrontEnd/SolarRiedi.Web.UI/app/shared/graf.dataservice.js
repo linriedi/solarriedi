@@ -24,6 +24,9 @@ var DataSvc = (function () {
         }
         return data;
     };
+    DataSvc.prototype.getSomeText = function () {
+        return 'hallo from dataservice';
+    };
     DataSvc = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

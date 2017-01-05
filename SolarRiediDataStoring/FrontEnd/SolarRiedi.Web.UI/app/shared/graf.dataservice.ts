@@ -14,4 +14,8 @@ export class DataSvc {
         }
         return data;
     }
+
+    public getSomeText() {
+        return 'hallo from dataservice';
+    }
 }
