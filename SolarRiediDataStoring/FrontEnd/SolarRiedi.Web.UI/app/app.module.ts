@@ -16,6 +16,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { GrafComponent } from './components/graf/graf.component';
 
 import { MeasurementDataService } from './shared/measurement.dataservice';
+import { DataSvc } from './shared/graf.dataservice';
 
 @NgModule({
     imports: [
@@ -40,6 +41,7 @@ import { MeasurementDataService } from './shared/measurement.dataservice';
     providers: [
         Configuration,
         MeasurementDataService,
+        DataSvc
     ],
 
     bootstrap: [AppComponent]

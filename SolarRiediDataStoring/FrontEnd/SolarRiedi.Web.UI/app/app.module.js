@@ -24,6 +24,7 @@ var measurementForm_component_1 = require('./components/measurementForm/measurem
 var navigation_component_1 = require('./components/navigation/navigation.component');
 var graf_component_1 = require('./components/graf/graf.component');
 var measurement_dataservice_1 = require('./shared/measurement.dataservice');
+var graf_dataservice_1 = require('./shared/graf.dataservice');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -49,6 +50,7 @@ var AppModule = (function () {
             providers: [
                 app_configuration_1.Configuration,
                 measurement_dataservice_1.MeasurementDataService,
+                graf_dataservice_1.DataSvc
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

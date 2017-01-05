@@ -8,9 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var core_1 = require('@angular/core');
+var graf_dataservice_1 = require('../../shared/graf.dataservice');
 var GrafComponent = (function () {
-    function GrafComponent() {
+    function GrafComponent(dataSvc) {
+        this.countries = 'US,Germany,UK,Japan,Italy,Greece'.split(',');
+        this.someText = 'Hy from component';
+        // data for FlexChart
+        this.dataSvc = dataSvc;
+        this.data = this.dataSvc.getData(this.countries);
     }
     GrafComponent.prototype.ngOnInit = function () {
     };
@@ -18,8 +27,9 @@ var GrafComponent = (function () {
         core_1.Component({
             selector: 'grafComponent',
             templateUrl: 'app/components/graf/graf.component.html'
-        }), 
-        __metadata('design:paramtypes', [])
+        }),
+        __param(0, core_1.Inject(graf_dataservice_1.DataSvc)), 
+        __metadata('design:paramtypes', [graf_dataservice_1.DataSvc])
     ], GrafComponent);
     return GrafComponent;
 }());

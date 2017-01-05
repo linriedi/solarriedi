@@ -52,6 +52,7 @@
     <TypeScriptCompile Include="app\models\measurementItem.ts" />
     <TypeScriptCompile Include="app\modules\shared.module.ts" />
     <TypeScriptCompile Include="app\shared\app.configuration.ts" />
+    <TypeScriptCompile Include="app\shared\graf.dataservice.ts" />
     <TypeScriptCompile Include="app\shared\measurement.dataservice.ts" />
     <TypeScriptCompile Include="app\validators\isInRange.validator.ts" />
     <TypeScriptCompile Include="app\validators\isNumber.validator.ts" />
