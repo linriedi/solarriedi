@@ -10,6 +10,5 @@ import { Configuration } from '../../shared/app.configuration';
 export class NavigationComponent {
 
     constructor(public _configuration: Configuration) {
-
     }
 }

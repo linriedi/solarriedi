@@ -4,7 +4,6 @@ import { Configuration } from  './shared/app.configuration';
 import { MeasurementDetailsComponent } from './components/measurementDetails/measurementDetails.component';
 
 export const AppRoutes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'measurement', component: MainMeasurementComponent },
   { path: 'measurement/:measurementId', component: MeasurementDetailsComponent }
 ];
