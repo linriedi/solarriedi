@@ -24,11 +24,6 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="app\app.component.html" />
-    <Content Include="app\components\foodDetails\foodDetails.component.html" />
-    <Content Include="app\components\foodForm\foodForm.component.html" />
-    <Content Include="app\components\foodList\foodList.component.html" />
-    <Content Include="app\components\home\home.component.html" />
-    <Content Include="app\components\mainFood\mainFood.component.html" />
     <Content Include="app\components\mainMeasurement\mainMeasurement.component.html" />
     <Content Include="app\components\measurementDetails\measurementDetails.component.html" />
     <Content Include="app\components\measurementForm\measurementForm.component.html" />
@@ -46,11 +41,6 @@
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.routes.ts" />
-    <TypeScriptCompile Include="app\components\foodDetails\foodDetails.component.ts" />
-    <TypeScriptCompile Include="app\components\foodForm\foodForm.component.ts" />
-    <TypeScriptCompile Include="app\components\foodList\foodList.component.ts" />
-    <TypeScriptCompile Include="app\components\home\home.component.ts" />
-    <TypeScriptCompile Include="app\components\mainFood\mainFood.component.ts" />
     <TypeScriptCompile Include="app\components\mainMeasurement\mainMeasurement.component.ts" />
     <TypeScriptCompile Include="app\components\measurementDetails\measurementDetails.component.ts" />
     <TypeScriptCompile Include="app\components\measurementForm\measurementForm.component.ts" />
@@ -58,11 +48,9 @@
     <TypeScriptCompile Include="app\components\navigation\navigation.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\models\measurementItem.ts" />
-    <TypeScriptCompile Include="app\models\foodItem.ts" />
     <TypeScriptCompile Include="app\modules\shared.module.ts" />
     <TypeScriptCompile Include="app\shared\app.configuration.ts" />
     <TypeScriptCompile Include="app\shared\measurement.dataservice.ts" />
-    <TypeScriptCompile Include="app\shared\food.dataservice.ts" />
     <TypeScriptCompile Include="app\validators\isInRange.validator.ts" />
     <TypeScriptCompile Include="app\validators\isNumber.validator.ts" />
   </ItemGroup>

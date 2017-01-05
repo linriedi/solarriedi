@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var Configuration = (function () {
     function Configuration() {
-        this.baseUrl = "http://backendservicesolarriediactual.azurewebsites.net/api/";
-        //baseUrl: string = "http://localhost:29775/api/";
+        //baseUrl: string = "http://backendservicesolarriediactual.azurewebsites.net/api/";
+        this.baseUrl = "http://localhost:29775/api/";
         this.title = "SolarRiedi";
     }
     Configuration = __decorate([

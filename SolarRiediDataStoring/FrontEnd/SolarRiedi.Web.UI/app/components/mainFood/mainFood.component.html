@@ -1,8 +1,0 @@
-<div class="container">
-    <div class="jumbotron">
-        <foodForm [foodItem]="foodSelectedFromList" (foodUpdated)="updateFood($event)" (foodAdded)="addFood($event)"></foodForm>
-        <br/>
-        <foodList [foods]="foods" (foodSelected)="setCurrentlySelectedFood($event)" (foodDeleted)="deleteFood($event)"></foodList>
-    </div>
-</div>
-<!-- /.container -->
