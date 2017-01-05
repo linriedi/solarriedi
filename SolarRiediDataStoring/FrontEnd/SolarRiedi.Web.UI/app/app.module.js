@@ -22,6 +22,7 @@ var measurementDetails_component_1 = require('./components/measurementDetails/me
 var measurementList_component_1 = require('./components/measurementList/measurementList.component');
 var measurementForm_component_1 = require('./components/measurementForm/measurementForm.component');
 var navigation_component_1 = require('./components/navigation/navigation.component');
+var graf_component_1 = require('./components/graf/graf.component');
 var measurement_dataservice_1 = require('./shared/measurement.dataservice');
 var AppModule = (function () {
     function AppModule() {
@@ -42,7 +43,8 @@ var AppModule = (function () {
                 measurementDetails_component_1.MeasurementDetailsComponent,
                 measurementList_component_1.MeasurementListComponent,
                 measurementForm_component_1.MeasurementFormComponent,
-                navigation_component_1.NavigationComponent
+                navigation_component_1.NavigationComponent,
+                graf_component_1.GrafComponent
             ],
             providers: [
                 app_configuration_1.Configuration,

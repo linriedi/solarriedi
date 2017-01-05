@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Configuration } from  './shared/app.configuration';
 import { MainMeasurementComponent } from  './components/mainMeasurement/mainMeasurement.component';
 import { MeasurementDetailsComponent } from './components/measurementDetails/measurementDetails.component';
+import { GrafComponent } from './components/graf/graf.component';
 
 @Component({
     selector: 'foodChooser-app',

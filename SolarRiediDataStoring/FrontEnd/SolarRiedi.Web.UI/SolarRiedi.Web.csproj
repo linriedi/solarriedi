@@ -24,6 +24,7 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="app\app.component.html" />
+    <Content Include="app\components\graf\graf.component.html" />
     <Content Include="app\components\mainMeasurement\mainMeasurement.component.html" />
     <Content Include="app\components\measurementDetails\measurementDetails.component.html" />
     <Content Include="app\components\measurementForm\measurementForm.component.html" />
@@ -41,6 +42,7 @@
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.routes.ts" />
+    <TypeScriptCompile Include="app\components\graf\graf.component.ts" />
     <TypeScriptCompile Include="app\components\mainMeasurement\mainMeasurement.component.ts" />
     <TypeScriptCompile Include="app\components\measurementDetails\measurementDetails.component.ts" />
     <TypeScriptCompile Include="app\components\measurementForm\measurementForm.component.ts" />

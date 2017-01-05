@@ -13,6 +13,7 @@ import { MeasurementDetailsComponent } from './components/measurementDetails/mea
 import { MeasurementListComponent } from './components/measurementList/measurementList.component';
 import { MeasurementFormComponent } from './components/measurementForm/measurementForm.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { GrafComponent } from './components/graf/graf.component';
 
 import { MeasurementDataService } from './shared/measurement.dataservice';
 
@@ -32,7 +33,8 @@ import { MeasurementDataService } from './shared/measurement.dataservice';
         MeasurementDetailsComponent,
         MeasurementListComponent,
         MeasurementFormComponent,
-        NavigationComponent
+        NavigationComponent,
+        GrafComponent
     ],
 
     providers: [
