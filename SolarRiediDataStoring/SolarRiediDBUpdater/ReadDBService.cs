@@ -28,8 +28,7 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 
             var sqlCommand = string.Format("Select datum, pac_1, pac_2, pac_3, pac_4, pac_5, pac_6, pac_7 from minutas where datum >= {0} and datum < {1}", from, to);
 
-            var table = this.dbConnection.Select(sqlCommand, this.settingsProvider.GetDbConnectionString());
-            return table;
+            return this.dbConnection.Select(sqlCommand, this.settingsProvider.GetDbConnectionString());
         }
 
         private string Format(int value)

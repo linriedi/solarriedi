@@ -1,4 +1,5 @@
 ﻿using Common;
+using ExcelAdapter;
 using Linus.SolarRiedi.DataStoringService;
 using Linus.SolarRiedi.DbConnectionService;
 using Linus.SolarRiedi.Settings;
@@ -15,7 +16,7 @@ namespace ReportingConsole
 
             var date = Console.ReadLine();
 
-            var service = new ReadService(new ReadDBService(new ConnectionService(), new SettingsProvider()));
+            var service = new ReadService(new ReadDBService(new ConnectionService(), new SettingsProvider()), new ExcelWriter());
 
             service.CreateReport(CreateDate(date), @"C:\Users\linri\Desktop");
         }
