@@ -49,6 +49,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataStoringService.Contracts\DataStoringService.Contracts.csproj">
+      <Project>{56795986-259f-4240-96ed-33998f0e7358}</Project>
+      <Name>DataStoringService.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataStoringService\DataStoringService.csproj">
+      <Project>{28c26b3d-dcb0-4216-a971-baab213304e9}</Project>
+      <Name>DataStoringService</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
