@@ -19,26 +19,12 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
 
         public IEnumerable<IEnumerable<string>> GetMeasurements(ReportDate date)
         {
-            var formattetMonth = this.Format(date.Month);
-            var formattetFromDay = this.Format(date.Day);
-            var formattetToDay = this.Format(date.Day + 1);
-
-            var from = string.Format("{0}{1}{2}0000", date.Year, formattetMonth, formattetFromDay);
-            var to = string.Format("{0}{1}{2}0000", date.Year, formattetMonth, formattetToDay);
+            var from = string.Format("{0}{1}{2}0000", date.YearAsString, date.MonthAsString, date.DayAsString);
+            var to = string.Format("{0}{1}{2}0000", date.YearAsString, date.MonthAsString, date.DayPlusOneAsString);
 
             var sqlCommand = string.Format("Select datum, pac_1, pac_2, pac_3, pac_4, pac_5, pac_6, pac_7 from minutas where datum >= {0} and datum < {1}", from, to);
 
             return this.dbConnection.Select(sqlCommand, this.settingsProvider.GetDbConnectionString());
-        }
-
-        private string Format(int value)
-        {
-            if (value < 10)
-            {
-                return string.Format("0{0}", value);
-            }
-
-            return value.ToString();
         }
     }
 }

@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IReadService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{49255A77-5999-49E3-9E51-C809120307E8}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FtpDownloader.Contracs\FtpDownloader.Contracs.csproj">
       <Project>{6D4B3A6E-590B-4846-A9FE-3C841A08B275}</Project>
       <Name>FtpDownloader.Contracs</Name>

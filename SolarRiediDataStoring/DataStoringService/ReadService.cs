@@ -2,10 +2,11 @@
 using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
 using Common;
 using ExcelAdapter.Contracts;
+using Linus.SolarRiedi.DataStoringService.Contracts;
 
 namespace Linus.SolarRiedi.DataStoringService
 {
-    public class ReadService
+    public class ReadService : IReadService
     {
         private readonly IExcelWriter excelWriter;
         private readonly IReadDBService readService;
@@ -19,7 +20,7 @@ namespace Linus.SolarRiedi.DataStoringService
         public void CreateReport(ReportDate date, string path)
         {
             var mesurements = this.GetMeasurements(date);
-            this.excelWriter.Write(mesurements);
+            this.excelWriter.Write(mesurements, path, date);
         }
 
         private IEnumerable<IEnumerable<string>> GetMeasurements(ReportDate date)
