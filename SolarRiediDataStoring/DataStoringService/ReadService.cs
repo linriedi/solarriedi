@@ -1,17 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Linus.SolarRiedi.DataStoringService.Contracts;
+﻿using System.Collections.Generic;
+using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
+using Common;
 
 namespace Linus.SolarRiedi.DataStoringService
 {
     public class ReadService
     {
-        public void CreateReport(ReportDate reportDate, string v)
+        private readonly IReadDBService readService;
+
+        public ReadService(IReadDBService readService)
         {
-            throw new NotImplementedException();
+            this.readService = readService;
+        }
+
+        public void CreateReport(ReportDate date, string path)
+        {
+            var mesurements = this.GetMeasurements(date);
+        }
+
+        private IEnumerable<IEnumerable<string>> GetMeasurements(ReportDate date)
+        {
+            return this.readService.GetMeasurements(date);
         }
     }
 }

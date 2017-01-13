@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportDate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FtpDownloader.Contracs\FtpDownloader.Contracs.csproj">

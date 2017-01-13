@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{49255A77-5999-49E3-9E51-C809120307E8}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataStoringService.Contracts\DataStoringService.Contracts.csproj">
       <Project>{56795986-259f-4240-96ed-33998f0e7358}</Project>
       <Name>DataStoringService.Contracts</Name>

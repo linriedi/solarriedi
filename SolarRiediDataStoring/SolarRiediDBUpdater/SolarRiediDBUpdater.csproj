@@ -49,6 +49,7 @@
     <Compile Include="DtoCreator.cs" />
     <Compile Include="IDataTableCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadDBService.cs" />
     <Compile Include="SqlCreator.cs" />
   </ItemGroup>
   <ItemGroup>

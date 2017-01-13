@@ -50,6 +50,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{49255A77-5999-49E3-9E51-C809120307E8}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConnectionWrapper.Contracts\ConnectionWrapper.Contracts.csproj">
+      <Project>{81fbcfae-7070-4132-8c02-dea24ff8069b}</Project>
+      <Name>ConnectionWrapper.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataStoringService.Contracts\DataStoringService.Contracts.csproj">
       <Project>{56795986-259f-4240-96ed-33998f0e7358}</Project>
       <Name>DataStoringService.Contracts</Name>
@@ -57,6 +65,26 @@
     <ProjectReference Include="..\DataStoringService\DataStoringService.csproj">
       <Project>{28c26b3d-dcb0-4216-a971-baab213304e9}</Project>
       <Name>DataStoringService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DbConnectionService\DbConnectionService.csproj">
+      <Project>{70372794-82E7-471E-A03A-2CF8FBA244AE}</Project>
+      <Name>DbConnectionService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Settings.Contracts\Settings.Contracts.csproj">
+      <Project>{0cee89c3-777b-40fc-9e79-b0218a84cb6e}</Project>
+      <Name>Settings.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Settings\Settings.csproj">
+      <Project>{4499501F-0D53-4D69-9AD1-76D3831B8231}</Project>
+      <Name>Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolarRiediDBUpdater.Contracs\SolarRiediDBUpdater.Contracs.csproj">
+      <Project>{b3d815e0-21b9-470d-b9cd-f10515f55dee}</Project>
+      <Name>SolarRiediDBUpdater.Contracs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolarRiediDBUpdater\SolarRiediDBUpdater.csproj">
+      <Project>{2A037C81-1EE8-4FEC-9BB9-8B72BB323D41}</Project>
+      <Name>SolarRiediDBUpdater</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

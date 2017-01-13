@@ -1,5 +1,8 @@
-﻿using Linus.SolarRiedi.DataStoringService;
-using Linus.SolarRiedi.DataStoringService.Contracts;
+﻿using Common;
+using Linus.SolarRiedi.DataStoringService;
+using Linus.SolarRiedi.DbConnectionService;
+using Linus.SolarRiedi.Settings;
+using Linus.SolarRiedi.SolarRiediDBUpdater;
 using System;
 
 namespace ReportingConsole
@@ -12,7 +15,7 @@ namespace ReportingConsole
 
             var date = Console.ReadLine();
 
-            var service = new ReadService();
+            var service = new ReadService(new ReadDBService(new ConnectionService(), new SettingsProvider()));
 
             service.CreateReport(CreateDate(date), @"C:\Users\linri\Desktop");
         }

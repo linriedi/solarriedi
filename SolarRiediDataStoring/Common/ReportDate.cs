@@ -1,4 +1,4 @@
-﻿namespace Linus.SolarRiedi.DataStoringService.Contracts
+﻿namespace Common
 {
     public class ReportDate
     {

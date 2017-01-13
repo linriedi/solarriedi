@@ -1,4 +1,7 @@
-﻿namespace Linus.SolarRiedi.SolarRiediDBUpdater.Contracs
+﻿using Common;
+using System.Collections.Generic;
+
+namespace Linus.SolarRiedi.SolarRiediDBUpdater.Contracs
 {
     public interface IDatabankService
     {
