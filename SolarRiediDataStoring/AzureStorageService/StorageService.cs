@@ -6,6 +6,7 @@ using Linus.SolarRiedi.Settings.Contracts;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace Linus.SolarRiedi.AzureStorageService
 {
@@ -21,9 +22,15 @@ namespace Linus.SolarRiedi.AzureStorageService
               
         public void UploadFromStream(Stream stream, string containerName, string fileName)
         {
+            Console.WriteLine("Init container {0}", containerName);
             this.Init(containerName);
+
+            Console.WriteLine("Get blob reference for {0}", fileName);
             var blockBlob = this.container.GetBlockBlobReference(fileName);
+
+            Console.WriteLine("Start upload...");
             blockBlob.UploadFromStream(stream);
+            Console.WriteLine("...End upload");
         }
 
         public IEnumerable<string> GetAllFiles(string containerName, string filePrefix)
