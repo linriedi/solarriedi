@@ -3,29 +3,37 @@ using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
 using Common;
 using ExcelAdapter.Contracts;
 using Linus.SolarRiedi.DataStoringService.Contracts;
+using System.Threading.Tasks;
 
 namespace Linus.SolarRiedi.DataStoringService
 {
     public class ReadService : IReadService
     {
+        private readonly WebApiClient client;
         private readonly IExcelWriter excelWriter;
-        private readonly IReadDBService readService;
-
+        
         public ReadService(IReadDBService readService, IExcelWriter excelWriter)
         {
-            this.readService = readService;
             this.excelWriter = excelWriter;
+            this.client = new WebApiClient();
         }
 
-        public void CreateReport(ReportDate date, string path)
+        public async void CreateReport(string date, string path)
         {
-            var mesurements = this.GetMeasurements(date);
-            this.excelWriter.Write(mesurements, path, date);
+            var mesurements = await this.GetMeasurements(date);
+
+            var split = date.Split('.');
+            int day = int.Parse(split[0]);
+            int month = int.Parse(split[1]);
+            int year = int.Parse(split[2]);
+
+            var reportDate = new ReportDate(year, month, day);
+            this.excelWriter.Write(mesurements, path, reportDate);
         }
 
-        private IEnumerable<IEnumerable<string>> GetMeasurements(ReportDate date)
+        private async Task<IEnumerable<IEnumerable<string>>> GetMeasurements(string date)
         {
-            return this.readService.GetMeasurements(date);
+            return await this.client.GetMeasurements(date);
         }
     }
 }

@@ -1,9 +1,7 @@
-﻿using Common;
-
-namespace Linus.SolarRiedi.DataStoringService.Contracts
+﻿namespace Linus.SolarRiedi.DataStoringService.Contracts
 {
     public interface IReadService
     {
-        void CreateReport(ReportDate date, string path);
+        void CreateReport(string date, string path);
     }
 }

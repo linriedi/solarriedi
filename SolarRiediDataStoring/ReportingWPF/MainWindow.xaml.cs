@@ -1,20 +1,6 @@
 ﻿using DataStoringService.Module;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Linus.SolarRiedi.DataStoringService.Contracts;
-using Common;
 
 namespace ReportingWPF
 {
@@ -34,11 +20,7 @@ namespace ReportingWPF
             var path = this.textBox.Text;
             var dateFromPicker = this.datePicker.SelectedDate;
 
-            var date = new ReportDate(
-                dateFromPicker.Value.Year, 
-                dateFromPicker.Value.Month, 
-                dateFromPicker.Value.Day);
-
+            var date = dateFromPicker.ToString().Split(' ')[0];
             this.service.CreateReport(date, path);
         }
     }
