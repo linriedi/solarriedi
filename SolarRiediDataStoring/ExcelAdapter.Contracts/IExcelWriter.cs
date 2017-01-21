@@ -1,7 +1,7 @@
 ﻿using Common;
 using System.Collections.Generic;
 
-namespace ExcelAdapter.Contracts
+namespace Linus.SolarRiedi.ExcelAdapter.Contracts
 {
     public interface IExcelWriter
     {

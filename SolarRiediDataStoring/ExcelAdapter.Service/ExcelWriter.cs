@@ -1,5 +1,5 @@
 ﻿using Common;
-using ExcelAdapter.Contracts;
+using Linus.SolarRiedi.ExcelAdapter.Contracts;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;

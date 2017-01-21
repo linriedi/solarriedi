@@ -7,7 +7,7 @@
     <ProjectGuid>{4CB2F6D1-A108-42BF-A634-76E7C951BC41}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExcelAdapter.Contracts</RootNamespace>
+    <RootNamespace>Linus.SolarRiedi.ExcelAdapter.Contracts</RootNamespace>
     <AssemblyName>ExcelAdapter.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
