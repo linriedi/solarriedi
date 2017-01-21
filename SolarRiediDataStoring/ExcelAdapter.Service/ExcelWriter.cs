@@ -11,7 +11,7 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
 {
     public class ExcelWriter : IExcelWriter
     {
-        public void Write(IEnumerable<IEnumerable<string>> mesurementsInput, string path, ReportDate date)
+        public void WriteDayReport(IEnumerable<IEnumerable<string>> mesurementsInput, string path, ReportDate date)
         {
             Application excel_app = null;
             Workbook workbook = null;

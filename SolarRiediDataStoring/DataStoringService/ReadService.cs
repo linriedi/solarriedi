@@ -28,7 +28,7 @@ namespace Linus.SolarRiedi.DataStoringService
             int year = int.Parse(split[2]);
 
             var reportDate = new ReportDate(year, month, day);
-            this.excelWriter.Write(mesurements, path, reportDate);
+            this.excelWriter.WriteDayReport(mesurements, path, reportDate);
         }
 
         private async Task<IEnumerable<IEnumerable<string>>> GetMeasurements(string date)
