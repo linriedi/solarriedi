@@ -72,5 +72,10 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
             File.Copy(templatePath, targetPath, true);
             return targetPath;
         }
+
+        public void WriteFullReport(IEnumerable<IEnumerable<string>> measurements, string path, ReportDate date)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
