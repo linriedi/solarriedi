@@ -1,7 +1,9 @@
-﻿namespace Linus.SolarRiedi.DataStoringService.Contracts
+﻿using System.Threading.Tasks;
+
+namespace Linus.SolarRiedi.DataStoringService.Contracts
 {
     public interface IReadService
     {
-        void CreateReport(string date, string path);
+        Task CreateReport(string date, string path);
     }
 }
