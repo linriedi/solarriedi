@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace ExcelAdapter
+namespace Linus.SolarRiedi.ExcelAdapter.Service
 {
     public class ExcelWriter : IExcelWriter
     {

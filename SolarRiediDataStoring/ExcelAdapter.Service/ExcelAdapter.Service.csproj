@@ -7,8 +7,8 @@
     <ProjectGuid>{EB315A1B-0475-44F2-86B9-450F529E3C93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExcelAdapter</RootNamespace>
-    <AssemblyName>ExcelAdapter</AssemblyName>
+    <RootNamespace>Linus.SolarRiedi.ExcelAdapter.Service</RootNamespace>
+    <AssemblyName>ExcelAdapter.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

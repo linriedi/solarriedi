@@ -1,4 +1,4 @@
-﻿using ExcelAdapter;
+﻿using Linus.SolarRiedi.ExcelAdapter.Service;
 using Linus.SolarRiedi.DataStoringService;
 using Linus.SolarRiedi.DataStoringService.Contracts;
 using Linus.SolarRiedi.DbConnectionService;
