@@ -1,6 +1,8 @@
 ﻿using DataStoringService.Module;
 using System.Windows;
 using Linus.SolarRiedi.DataStoringService.Contracts;
+using System;
+using System.Text;
 
 namespace ReportingWPF
 {
@@ -15,13 +17,28 @@ namespace ReportingWPF
             this.service = new Initializer().GetService();
         }
 
-        private void Create_Click(object sender, RoutedEventArgs e)
+        private async void Create_Click(object sender, RoutedEventArgs args)
         {
-            var path = this.textBox.Text;
-            var dateFromPicker = this.datePicker.SelectedDate;
+            try
+            {
+                this.message.Text = "vid crear...";
 
-            var date = dateFromPicker.ToString().Split(' ')[0];
-            this.service.CreateReport(date, path);
+                var path = this.textBox.Text;
+                var dateFromPicker = this.datePicker.SelectedDate;
+
+                var date = dateFromPicker.ToString().Split(' ')[0];
+                await this.service.CreateReport(date, path);
+
+                this.message.Text = "creau";
+            }
+            catch (Exception e)
+            {
+                var bulider = new StringBuilder();
+                bulider
+                    .AppendLine(e.Message)
+                    .AppendLine(e.StackTrace);
+                this.message.Text = bulider.ToString();
+            }
         }
     }
 }
