@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
-using Common;
+using Linus.SolarRiedi.Common;
 using Linus.SolarRiedi.ExcelAdapter.Contracts;
 using Linus.SolarRiedi.DataStoringService.Contracts;
 using System.Threading.Tasks;

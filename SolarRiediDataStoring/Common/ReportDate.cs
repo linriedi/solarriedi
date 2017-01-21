@@ -1,4 +1,4 @@
-﻿namespace Common
+﻿namespace Linus.SolarRiedi.Common
 {
     public class ReportDate
     {

@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using Linus.SolarRiedi.Common;
 using Linus.SolarRiedi.ExcelAdapter.Contracts;
 using Microsoft.Office.Interop.Excel;
 using System;

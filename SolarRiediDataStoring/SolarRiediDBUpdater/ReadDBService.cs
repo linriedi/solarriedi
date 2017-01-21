@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using Linus.SolarRiedi.Common;
 using Linus.SolarRiedi.ConnectionWrapper.Contracts;
 using Linus.SolarRiedi.Settings.Contracts;
 using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;

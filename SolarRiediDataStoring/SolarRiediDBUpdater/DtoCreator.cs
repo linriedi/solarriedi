@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
-using Common;
+using Linus.SolarRiedi.Common;
 
 namespace Linus.SolarRiedi.SolarRiediDBUpdater
 {

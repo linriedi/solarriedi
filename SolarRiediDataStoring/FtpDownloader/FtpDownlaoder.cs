@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using Linus.SolarRiedi.Common;
 using Linus.SolarRiedi.AzureStorageWrapper.Contracts;
 using Linus.SolarRiedi.FtpDownloader.Contracs;
 using Linus.SolarRiedi.FtpWrapper.Contracts;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Common
+namespace Linus.SolarRiedi.Common
 {
     public static class Time
     {
