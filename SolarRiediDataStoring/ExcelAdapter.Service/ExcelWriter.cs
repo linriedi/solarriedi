@@ -106,7 +106,8 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
 
             chartRange = xlWorkSheet.get_Range("A1", "d5");
             chartPage.SetSourceData(chartRange, misValue);
-            chartPage.ChartType = XlChartType.xlColumnClustered;
+
+            ChartSettings.Configure(chartPage);
 
             xlWorkBook.SaveAs(string.Format("{0}\\test.xlsx", path));
             xlWorkBook.Close(true, misValue, misValue);
