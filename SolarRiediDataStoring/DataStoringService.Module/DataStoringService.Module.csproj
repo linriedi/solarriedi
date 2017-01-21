@@ -64,9 +64,9 @@
       <Project>{4cb2f6d1-a108-42bf-a634-76e7c951bc41}</Project>
       <Name>ExcelAdapter.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ExcelAdapter\ExcelAdapter.csproj">
+    <ProjectReference Include="..\ExcelAdapter.Service\ExcelAdapter.Service.csproj">
       <Project>{EB315A1B-0475-44F2-86B9-450F529E3C93}</Project>
-      <Name>ExcelAdapter</Name>
+      <Name>ExcelAdapter.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\Settings.Contracts\Settings.Contracts.csproj">
       <Project>{0cee89c3-777b-40fc-9e79-b0218a84cb6e}</Project>
