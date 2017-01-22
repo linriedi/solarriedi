@@ -18,9 +18,9 @@ namespace Linus.SolarRiedi.DataStoringService
             this.client = new WebApiClient();
         }
 
-        public Task CreateFullReport(string path)
+        public async Task CreateFullReport(string path)
         {
-            throw new NotImplementedException();
+            var measurements = await this.client.GetYearMeasurements();
         }
 
         public async Task CreateReport(string date, string path)

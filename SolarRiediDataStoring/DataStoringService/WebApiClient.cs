@@ -30,5 +30,10 @@ namespace Linus.SolarRiedi.DataStoringService
 
             return product;
         }
+
+        public async Task<IEnumerable<double>> GetYearMeasurements()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
