@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using Linus.SolarRiedi.Common;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
@@ -31,9 +30,16 @@ namespace Linus.SolarRiedi.DataStoringService
             return product;
         }
 
-        public async Task<IEnumerable<double>> GetYearMeasurements()
+        public async Task<IEnumerable<IEnumerable<string>>> GetYearMeasurements()
         {
-            throw new NotImplementedException();
+            IEnumerable<IEnumerable<string>> product = null;
+            HttpResponseMessage response = await client.GetAsync("api/year");
+            if (response.IsSuccessStatusCode)
+            {
+                product = await response.Content.ReadAsAsync<IEnumerable<IEnumerable<string>>>();
+            }
+
+            return product;
         }
     }
 }
