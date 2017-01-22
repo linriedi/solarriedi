@@ -40,5 +40,10 @@ namespace ReportingWPF
                 this.message.Text = bulider.ToString();
             }
         }
+
+        private async void CreateFullReport_Click(object sender, RoutedEventArgs args)
+        {
+            this.message.Text = "hi";
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
+﻿using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
 using Linus.SolarRiedi.Common;
 using Linus.SolarRiedi.ExcelAdapter.Contracts;
 using Linus.SolarRiedi.DataStoringService.Contracts;
@@ -20,7 +19,7 @@ namespace Linus.SolarRiedi.DataStoringService
 
         public async Task CreateReport(string date, string path)
         {
-            var mesurements = await this.GetMeasurements(date);
+            var mesurements = await this.client.GetMeasurements(date);
 
             var split = date.Split('.');
             int day = int.Parse(split[0]);
@@ -29,11 +28,6 @@ namespace Linus.SolarRiedi.DataStoringService
 
             var reportDate = new ReportDate(year, month, day);
             this.excelWriter.WriteDayReport(mesurements, path, reportDate);
-        }
-
-        private async Task<IEnumerable<IEnumerable<string>>> GetMeasurements(string date)
-        {
-            return await this.client.GetMeasurements(date);
         }
     }
 }
