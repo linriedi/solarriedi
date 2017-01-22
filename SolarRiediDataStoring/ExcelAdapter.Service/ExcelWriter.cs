@@ -11,6 +11,22 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
 {
     public class ExcelWriter : IExcelWriter
     {
+        private readonly Dictionary<int, string> map = new Dictionary<int, string>
+        {
+            { 1, "A" },
+            { 2, "B" },
+            { 3, "C" },
+            { 4, "D" },
+            { 5, "E" },
+            { 6, "F" },
+            { 7, "G" },
+            { 8, "H" },
+            { 9, "I" },
+            { 10, "J" },
+            { 11, "K" },
+            { 12, "L" }
+        };
+
         public void WriteDayReport(IEnumerable<IEnumerable<string>> mesurementsInput, string path, ReportDate date)
         {
             Application excel_app = null;
@@ -86,13 +102,16 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
 
             Range chartRange;
 
-            var writeRange = xlWorkSheet.Range("B2", "C13");
+            var to = this.map[measurements.Count() + 1];
+            var toString = string.Format("{0}13", to);
+
+            var writeRange = xlWorkSheet.Range("B2", toString);
             writeRange.Value2 = CreateValuesMatrixAsNumber(measurements.ToList());
             ChartObjects xlCharts = (ChartObjects)xlWorkSheet.ChartObjects(Type.Missing);
             ChartObject myChart = (ChartObject)xlCharts.Add(10, 80, 300, 250);
             Chart chartPage = myChart.Chart;
 
-            chartRange = xlWorkSheet.Range("A1", "C13");
+            chartRange = xlWorkSheet.Range("A1", toString);
             chartPage.SetSourceData(chartRange, misValue);
                         
             ChartSettings.Configure(chartPage);

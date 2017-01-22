@@ -29,5 +29,15 @@ namespace Linus.SolarRiedi.ExcelAdapter.Contracts
                 }
             }
         }
+
+        public bool Match(string year)
+        {
+            return year == this.Year;
+        }
+
+        public void AddMonth(int month, double value)
+        {
+            this.Production[month - 1] = value;
+        }
     }
 }
