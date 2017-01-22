@@ -21,7 +21,7 @@ namespace ReportingWPF
         {
             try
             {
-                this.message.Text = "vid crear...";
+                SetBuisy();
 
                 var path = this.textBox.Text;
                 var dateFromPicker = this.datePicker.SelectedDate;
@@ -29,21 +29,48 @@ namespace ReportingWPF
                 var date = dateFromPicker.ToString().Split(' ')[0];
                 await this.service.CreateReport(date, path);
 
-                this.message.Text = "creau";
+                ReSetBuisy();
             }
             catch (Exception e)
             {
-                var bulider = new StringBuilder();
-                bulider
-                    .AppendLine(e.Message)
-                    .AppendLine(e.StackTrace);
-                this.message.Text = bulider.ToString();
+                Log(e);
             }
         }
 
         private async void CreateFullReport_Click(object sender, RoutedEventArgs args)
         {
-            this.message.Text = "hi";
+            try
+            {
+                SetBuisy();
+
+                var path = this.textBox.Text;
+                await this.service.CreateFullReport(path);
+
+                ReSetBuisy();
+            }
+            catch (Exception e)
+            {
+                Log(e);
+            }
+        }
+
+        private void Log(Exception e)
+        {
+            var bulider = new StringBuilder();
+            bulider
+                .AppendLine(e.Message)
+                .AppendLine(e.StackTrace);
+            this.message.Text = bulider.ToString();
+        }
+
+        private void SetBuisy()
+        {
+            this.message.Text = "vid crear...";
+        }
+
+        private void ReSetBuisy()
+        {
+            this.message.Text = "creau";
         }
     }
 }

@@ -3,6 +3,7 @@ using Linus.SolarRiedi.Common;
 using Linus.SolarRiedi.ExcelAdapter.Contracts;
 using Linus.SolarRiedi.DataStoringService.Contracts;
 using System.Threading.Tasks;
+using System;
 
 namespace Linus.SolarRiedi.DataStoringService
 {
@@ -15,6 +16,11 @@ namespace Linus.SolarRiedi.DataStoringService
         {
             this.excelWriter = excelWriter;
             this.client = new WebApiClient();
+        }
+
+        public Task CreateFullReport(string path)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task CreateReport(string date, string path)
