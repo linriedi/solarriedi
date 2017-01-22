@@ -52,7 +52,7 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
             }
         }
 
-        public void WriteFullReport(IEnumerable<IEnumerable<string>> measurements, string path, ReportDate date)
+        public void WriteFullReport(IEnumerable<MeasurementsYear> measurements, string path)
         {
             Application xlApp;
             Workbook xlWorkBook;
@@ -63,8 +63,11 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
             xlWorkBook = xlApp.Workbooks.Add(misValue);
             xlWorkSheet = (Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            xlWorkSheet.Cells[1, 2] = "2015";
-            xlWorkSheet.Cells[1, 3] = "2016";
+            var measurementsList = measurements.ToList();
+            for (int i = 0; i < measurements.Count(); i++)
+            {
+                xlWorkSheet.Cells[1, i + 2] = measurementsList[i].Year;
+            }
 
             xlWorkSheet.Cells[2, 1] = "schaner";
             xlWorkSheet.Cells[3, 1] = "fevrer";
@@ -85,7 +88,6 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
 
             var writeRange = xlWorkSheet.Range("B2", "C13");
             writeRange.Value2 = CreateValuesMatrixAsNumber(measurements.ToList());
-
             ChartObjects xlCharts = (ChartObjects)xlWorkSheet.ChartObjects(Type.Missing);
             ChartObject myChart = (ChartObject)xlCharts.Add(10, 80, 300, 250);
             Chart chartPage = myChart.Chart;
@@ -133,22 +135,23 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
             return targetPath;
         }
 
-        private static object[,] CreateValuesMatrixAsNumber(List<IEnumerable<string>> measurements)
+        private static object[,] CreateValuesMatrixAsNumber(IList<MeasurementsYear> measurements)
         {
-            var values = new object[measurements.Count(), measurements.First().Count()];
+            var values = new object[measurements.First().Count, measurements.Count()];
             for (int i = 0; i < measurements.Count(); i++)
             {
-                var row = measurements[i].ToArray();
-                for (int j = 0; j < measurements.First().Count(); j++)
+                var row = measurements[i].Production;
+                var count = measurements[i].Count;
+                for (int j = 0; j < count; j++)
                 {
-                    var value = double.Parse(row[j]);
-                    if(value != 0)
+                    var value = row[j];
+                    if(value != -1)
                     {
-                        values[i, j] = value;
+                        values[j, i] = value;
                     }
                     else
                     {
-                        values[i, j] = null;
+                        values[j, i] = null;
                     }                    
                 }
             }
