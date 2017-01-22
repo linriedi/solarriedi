@@ -6,7 +6,7 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
     {
         internal static void Configure(Chart chart)
         {
-            chart.ChartType = XlChartType.xlLine;
+            chart.ChartType = XlChartType.xlLineMarkers;
         }
     }
 }

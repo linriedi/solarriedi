@@ -20,22 +20,13 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
 
             try
             {
-                var measurements = mesurementsInput.ToList();
                 var excelFilePath = CopyTemplate(path, date);
 
                 excel_app = new Application();
                 workbook = excel_app.Workbooks.Open(excelFilePath);
                 sheet = workbook.Worksheets["rawData"];
 
-                var values = new string[mesurementsInput.Count(), mesurementsInput.First().Count()];
-                for (int i = 0; i < mesurementsInput.Count(); i++)
-                {
-                    var row = measurements[i].ToArray();
-                    for (int j = 0; j < mesurementsInput.First().Count(); j++)
-                    {
-                        values[i, j] = row[j];
-                    }
-                }
+                string[,] values = CreateValuesMatrix(mesurementsInput.ToList());
 
                 value_range = sheet.Range("A1", "H288");
                 value_range.Value2 = values;
@@ -65,48 +56,43 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
         {
             Application xlApp;
             Workbook xlWorkBook;
-            Worksheet xlWorkSheet;
+            dynamic xlWorkSheet;
             object misValue = System.Reflection.Missing.Value;
 
             xlApp = new Application();
             xlWorkBook = xlApp.Workbooks.Add(misValue);
             xlWorkSheet = (Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            //add data 
-            xlWorkSheet.Cells[1, 1] = "";
-            xlWorkSheet.Cells[1, 2] = "Student1";
-            xlWorkSheet.Cells[1, 3] = "Student2";
-            xlWorkSheet.Cells[1, 4] = "Student3";
+            xlWorkSheet.Cells[1, 2] = "2015";
+            xlWorkSheet.Cells[1, 3] = "2016";
 
-            xlWorkSheet.Cells[2, 1] = "Term1";
-            xlWorkSheet.Cells[2, 2] = "80";
-            xlWorkSheet.Cells[2, 3] = "65";
-            xlWorkSheet.Cells[2, 4] = "45";
+            xlWorkSheet.Cells[2, 1] = "schaner";
+            xlWorkSheet.Cells[3, 1] = "fevrer";
+            xlWorkSheet.Cells[4, 1] = "mart";
+            xlWorkSheet.Cells[5, 1] = "avrel";
 
-            xlWorkSheet.Cells[3, 1] = "Term2";
-            xlWorkSheet.Cells[3, 2] = "78";
-            xlWorkSheet.Cells[3, 3] = "72";
-            xlWorkSheet.Cells[3, 4] = "60";
+            xlWorkSheet.Cells[6, 1] = "matg";
+            xlWorkSheet.Cells[7, 1] = "zercladur";
+            xlWorkSheet.Cells[8, 1] = "fenadur";
+            xlWorkSheet.Cells[9, 1] = "uost";
 
-            xlWorkSheet.Cells[4, 1] = "Term3";
-            xlWorkSheet.Cells[4, 2] = "82";
-            xlWorkSheet.Cells[4, 3] = "80";
-            xlWorkSheet.Cells[4, 4] = "65";
-
-            xlWorkSheet.Cells[5, 1] = "Term4";
-            xlWorkSheet.Cells[5, 2] = "75";
-            xlWorkSheet.Cells[5, 3] = "82";
-            xlWorkSheet.Cells[5, 4] = "68";
+            xlWorkSheet.Cells[10, 1] = "setember";
+            xlWorkSheet.Cells[11, 1] = "october";
+            xlWorkSheet.Cells[12, 1] = "november";
+            xlWorkSheet.Cells[13, 1] = "december";
 
             Range chartRange;
+
+            var writeRange = xlWorkSheet.Range("B2", "C13");
+            writeRange.Value2 = CreateValuesMatrixAsNumber(measurements.ToList());
 
             ChartObjects xlCharts = (ChartObjects)xlWorkSheet.ChartObjects(Type.Missing);
             ChartObject myChart = (ChartObject)xlCharts.Add(10, 80, 300, 250);
             Chart chartPage = myChart.Chart;
 
-            chartRange = xlWorkSheet.get_Range("A1", "d5");
+            chartRange = xlWorkSheet.Range("A1", "C13");
             chartPage.SetSourceData(chartRange, misValue);
-
+                        
             ChartSettings.Configure(chartPage);
 
             xlWorkBook.SaveAs(string.Format("{0}\\test.xlsx", path));
@@ -145,6 +131,44 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
 
             File.Copy(templatePath, targetPath, true);
             return targetPath;
+        }
+
+        private static object[,] CreateValuesMatrixAsNumber(List<IEnumerable<string>> measurements)
+        {
+            var values = new object[measurements.Count(), measurements.First().Count()];
+            for (int i = 0; i < measurements.Count(); i++)
+            {
+                var row = measurements[i].ToArray();
+                for (int j = 0; j < measurements.First().Count(); j++)
+                {
+                    var value = double.Parse(row[j]);
+                    if(value != 0)
+                    {
+                        values[i, j] = value;
+                    }
+                    else
+                    {
+                        values[i, j] = null;
+                    }                    
+                }
+            }
+
+            return values;
+        }
+
+        private static string[,] CreateValuesMatrix(List<IEnumerable<string>> measurements)
+        {
+            var values = new string[measurements.Count(), measurements.First().Count()];
+            for (int i = 0; i < measurements.Count(); i++)
+            {
+                var row = measurements[i].ToArray();
+                for (int j = 0; j < measurements.First().Count(); j++)
+                {
+                    values[i, j] = row[j];
+                }
+            }
+
+            return values;
         }
     }
 }
