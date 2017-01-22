@@ -16,6 +16,19 @@ namespace Linus.SolarRiedi.BackEnd.Service.Repositories
             return this.Select(sqlCommand, ConnectionString.Value);
         }
 
+        public IEnumerable<IEnumerable<string>> GetYearMeasurements()
+        {
+            var matrix = new List<IEnumerable<string>>();
+
+            var firstRow = new List<string> { "1605", "2", "3"};
+            var secondRow = new List<string> { "1606", "3", "4" };
+
+            matrix.Add(firstRow);
+            matrix.Add(secondRow);
+
+            return matrix;
+        }
+
         private IEnumerable<IEnumerable<string>> Select(string sqlCommand, string connectionString)
         {
             var list = new List<List<string>>();
