@@ -16,6 +16,13 @@ namespace Linus.SolarRiedi.BackEnd.Service.Repositories
             return this.Select(sqlCommand, ConnectionString.Value);
         }
 
+        public IEnumerable<IEnumerable<string>> GetMonthMeasurements(ReportDate date)
+        {
+            var sqlCommand = string.Format("Select datum, Psum_0, Psum_1, Psum_2, Psum_3, Psum_4, Psum_5, Psum_6 from gis");
+
+            return this.Select(sqlCommand, ConnectionString.Value);
+        }
+
         public IEnumerable<IEnumerable<string>> GetYearMeasurements()
         {
             var sqlCommand = string.Format("Select * from meins");

@@ -7,5 +7,6 @@ namespace Linus.SolarRiedi.BackEnd.Service.Repositories
     {
         IEnumerable<IEnumerable<string>> GetMeasurements(ReportDate date);
         IEnumerable<IEnumerable<string>> GetYearMeasurements();
+        IEnumerable<IEnumerable<string>> GetMonthMeasurements(ReportDate date);
     }
 }
