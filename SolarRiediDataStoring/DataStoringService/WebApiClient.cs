@@ -41,5 +41,17 @@ namespace Linus.SolarRiedi.DataStoringService
 
             return product;
         }
+
+        public async Task<IEnumerable<IEnumerable<string>>> GetMonthMeasurements(string date)
+        {
+            IEnumerable<IEnumerable<string>> product = null;
+            HttpResponseMessage response = await client.GetAsync(string.Format("api/month/{0}", date));
+            if (response.IsSuccessStatusCode)
+            {
+                product = await response.Content.ReadAsAsync<IEnumerable<IEnumerable<string>>>();
+            }
+
+            return product;
+        }
     }
 }
