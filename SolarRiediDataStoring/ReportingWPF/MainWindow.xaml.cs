@@ -17,7 +17,7 @@ namespace ReportingWPF
             this.service = new Initializer().GetService();
         }
 
-        private async void Create_Click(object sender, RoutedEventArgs args)
+        private async void CreateDay_Click(object sender, RoutedEventArgs args)
         {
             try
             {
@@ -28,6 +28,22 @@ namespace ReportingWPF
 
                 var date = dateFromPicker.ToString().Split(' ')[0];
                 await this.service.CreateReport(date, path);
+
+                ReSetBuisy();
+            }
+            catch (Exception e)
+            {
+                Log(e);
+            }
+        }
+
+        private void CreateMonth_Click(object sender, RoutedEventArgs args)
+        {
+            try
+            {
+                SetBuisy();
+
+                throw new Exception("vegn gleiti... :-)");
 
                 ReSetBuisy();
             }
