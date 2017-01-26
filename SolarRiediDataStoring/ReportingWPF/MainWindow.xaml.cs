@@ -22,12 +22,8 @@ namespace ReportingWPF
             try
             {
                 SetBuisy();
-
-                var path = this.textBox.Text;
-                var dateFromPicker = this.datePicker.SelectedDate;
-
-                var date = dateFromPicker.ToString().Split(' ')[0];
-                await this.service.CreateReport(date, path);
+                                
+                await this.service.CreateReport(this.GetDate(), this.GetPath());
 
                 ReSetBuisy();
             }
@@ -37,13 +33,13 @@ namespace ReportingWPF
             }
         }
 
-        private void CreateMonth_Click(object sender, RoutedEventArgs args)
+        private async void CreateMonth_Click(object sender, RoutedEventArgs args)
         {
             try
             {
                 SetBuisy();
 
-                throw new Exception("vegn gleiti... :-)");
+                await this.service.CreateMonthReport(this.GetDate(), this.GetPath());
 
                 ReSetBuisy();
             }
@@ -87,6 +83,17 @@ namespace ReportingWPF
         private void ReSetBuisy()
         {
             this.message.Text = "creau";
+        }
+
+        private string GetPath()
+        {
+            return this.textBox.Text;
+        }
+
+        private string GetDate()
+        {
+            var dateFromPicker = this.datePicker.SelectedDate;
+            return dateFromPicker.ToString().Split(' ')[0];
         }
     }
 }

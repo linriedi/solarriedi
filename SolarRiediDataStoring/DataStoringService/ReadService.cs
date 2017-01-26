@@ -5,6 +5,7 @@ using Linus.SolarRiedi.DataStoringService.Contracts;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Linus.SolarRiedi.DataStoringService
 {
@@ -37,6 +38,11 @@ namespace Linus.SolarRiedi.DataStoringService
 
             var reportDate = new ReportDate(year, month, day);
             this.excelWriter.WriteDayReport(mesurements, path, reportDate);
+        }
+
+        public Task CreateMonthReport(string date, string path)
+        {
+            throw new NotImplementedException();
         }
 
         private static IEnumerable<MeasurementsYear> CreateMatrix(IEnumerable<IEnumerable<string>> measurementsInput)

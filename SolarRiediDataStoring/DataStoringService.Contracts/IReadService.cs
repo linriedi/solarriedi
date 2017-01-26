@@ -6,5 +6,6 @@ namespace Linus.SolarRiedi.DataStoringService.Contracts
     {
         Task CreateReport(string date, string path);
         Task CreateFullReport(string path);
+        Task CreateMonthReport(string date, string path);
     }
 }
