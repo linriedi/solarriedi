@@ -36,7 +36,7 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
 
             try
             {
-                var excelFilePath = CopyTemplate(path, date);
+                var excelFilePath = CopyDayTemplate(path, date);
 
                 excel_app = new Application();
                 workbook = excel_app.Workbooks.Open(excelFilePath);
@@ -127,7 +127,7 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
 
         public void WriteMonthReport(IEnumerable<IEnumerable<string>> mesurements, string path, ReportDate date)
         {
-            throw new NotImplementedException();
+            CopyMonthTemplate(path, date);
         }
 
         private void releaseObject(object obj)
@@ -147,13 +147,25 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
             }
         }
 
-        private static string CopyTemplate(string path, ReportDate date)
+        private static string CopyDayTemplate(string path, ReportDate date)
+        {
+            var fileName = string.Format("{0}{1}{2}_Gi.xlsx", date.YearAsString, date.MonthAsString, date.DayAsString);
+            return CopyTemplate(path, date, "DayTemplate.xlsx", fileName);
+        }
+
+        private static string CopyMonthTemplate(string path, ReportDate date)
+        {
+            var fileName = string.Format("{0}{1}_Meins.xlsx", date.YearAsString, date.MonthAsString);
+            return CopyTemplate(path, date, "MonthTemplate.xlsx", fileName);
+        }
+
+        private static string CopyTemplate(string path, ReportDate date, string templateFile, string targetFileName)
         {
             var location = System.Reflection.Assembly.GetExecutingAssembly().Location;
             var directory = Path.GetDirectoryName(location);
 
-            var templatePath = string.Format("{0}\\Template\\DayTemplate.xlsx", directory);
-            var targetPath = string.Format("{0}\\{1}{2}{3}_Gi.xlsx", path, date.YearAsString, date.MonthAsString, date.DayAsString);
+            var templatePath = string.Format("{0}\\Template\\{1}", directory, templateFile);
+            var targetPath = string.Format("{0}\\{1}", path, targetFileName);
 
             File.Copy(templatePath, targetPath, true);
             return targetPath;
