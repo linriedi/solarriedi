@@ -192,5 +192,10 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
 
             return values;
         }
+
+        public void WriteMonthReport(IEnumerable<IEnumerable<string>> mesurements, string path, ReportDate date)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

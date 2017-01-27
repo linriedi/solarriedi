@@ -29,19 +29,26 @@ namespace Linus.SolarRiedi.DataStoringService
         public async Task CreateReport(string date, string path)
         {
             var mesurements = await this.client.GetMeasurements(date);
-
-            var split = date.Split('.');
-            int day = int.Parse(split[0]);
-            int month = int.Parse(split[1]);
-            int year = int.Parse(split[2]);
-
-            var reportDate = new ReportDate(year, month, day);
+            var reportDate = CreateReportDate(date);
             this.excelWriter.WriteDayReport(mesurements, path, reportDate);
         }
 
         public async Task CreateMonthReport(string date, string path)
         {
             var mesurements = await this.client.GetMonthMeasurements(date);
+            var reportDate = CreateReportDate(date);
+            this.excelWriter.WriteMonthReport(mesurements, path, reportDate);
+        }
+
+        private static ReportDate CreateReportDate(string date)
+        {
+            var split = date.Split('.');
+            int day = int.Parse(split[0]);
+            int month = int.Parse(split[1]);
+            int year = int.Parse(split[2]);
+
+            var reportDate = new ReportDate(year, month, day);
+            return reportDate;
         }
 
         private static IEnumerable<MeasurementsYear> CreateMatrix(IEnumerable<IEnumerable<string>> measurementsInput)
