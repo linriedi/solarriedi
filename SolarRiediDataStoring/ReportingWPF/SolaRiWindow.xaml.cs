@@ -6,11 +6,11 @@ using System.Text;
 
 namespace ReportingWPF
 {
-    public partial class MainWindow : Window
+    public partial class SolaRiWindow : Window
     {
         private readonly IReadService service;
 
-        public MainWindow()
+        public SolaRiWindow()
         {
             InitializeComponent();
 
