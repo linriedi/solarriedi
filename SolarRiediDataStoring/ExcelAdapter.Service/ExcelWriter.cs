@@ -132,6 +132,7 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
             Application excel_app = null;
             Workbook workbook = null;
             dynamic sheet = null;
+            dynamic preparedDateSheet = null;
             Range value_range = null;
 
             try
@@ -144,6 +145,13 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
 
                 value_range = sheet.Range("A1", "H31");
                 value_range.Value2 = values;
+
+                preparedDateSheet = workbook.Worksheets["preparedData"];
+                var count = mesurementsInput.Count();
+                for(int i = 0; i < 35; i++)
+                {
+                    ((Range)preparedDateSheet.Rows[count + 2]).Delete(XlDeleteShiftDirection.xlShiftUp);
+                }
             }
             finally
             {
