@@ -125,9 +125,45 @@ namespace Linus.SolarRiedi.ExcelAdapter.Service
             releaseObject(xlApp);
         }
 
-        public void WriteMonthReport(IEnumerable<IEnumerable<string>> mesurements, string path, ReportDate date)
+        public void WriteMonthReport(IEnumerable<IEnumerable<string>> mesurementsInput, string path, ReportDate date)
         {
-            CopyMonthTemplate(path, date);
+            var excelFilePath = CopyMonthTemplate(path, date);
+
+            Application excel_app = null;
+            Workbook workbook = null;
+            dynamic sheet = null;
+            Range value_range = null;
+
+            try
+            {
+                excel_app = new Application();
+                workbook = excel_app.Workbooks.Open(excelFilePath);
+                sheet = workbook.Worksheets["rawData"];
+
+                string[,] values = CreateValuesMatrix(mesurementsInput.ToList());
+
+                value_range = sheet.Range("A1", "H31");
+                value_range.Value2 = values;
+            }
+            finally
+            {
+                //TODO if failes not all resourcer are released
+                if (workbook != null)
+                {
+                    workbook.Close(true, Type.Missing, Type.Missing);
+                }
+
+                if (excel_app != null)
+                {
+                    excel_app.Application.Quit();
+                    excel_app.Quit();
+                }
+
+                Marshal.FinalReleaseComObject(sheet);
+                Marshal.FinalReleaseComObject(workbook);
+                Marshal.FinalReleaseComObject(excel_app);
+                Marshal.FinalReleaseComObject(value_range);
+            }
         }
 
         private void releaseObject(object obj)
