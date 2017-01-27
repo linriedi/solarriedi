@@ -18,7 +18,10 @@ namespace Linus.SolarRiedi.BackEnd.Service.Repositories
 
         public IEnumerable<IEnumerable<string>> GetMonthMeasurements(ReportDate date)
         {
-            var sqlCommand = string.Format("Select datum, Psum_0, Psum_1, Psum_2, Psum_3, Psum_4, Psum_5, Psum_6 from gis");
+            var from = string.Format("{0}{1}00", date.YearAsString, date.MonthAsString);
+            var to = string.Format("{0}{1}00", date.YearAsString, date.MonthPlusOneAsString);
+
+            var sqlCommand = string.Format("Select datum, Psum_0, Psum_1, Psum_2, Psum_3, Psum_4, Psum_5, Psum_6 from gis where datum >= {0} and datum < {1}", from, to);
 
             return this.Select(sqlCommand, ConnectionString.Value);
         }

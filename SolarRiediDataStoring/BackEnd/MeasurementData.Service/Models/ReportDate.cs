@@ -45,6 +45,14 @@
             }
         }
 
+        public string MonthPlusOneAsString
+        {
+            get
+            {
+                return this.Format(this.Month + 1);
+            }
+        }
+
         private string Format(int value)
         {
             if (value < 10)
