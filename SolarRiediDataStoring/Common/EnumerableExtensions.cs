@@ -11,6 +11,12 @@ namespace Linus.SolarRiedi.Common
             return reversed.Take(4).Reverse();
         }
 
+        public static IEnumerable<T> LastSeven<T>(this IEnumerable<T> list)
+        {
+            var reversed = list.Reverse();
+            return reversed.Take(7).Reverse();
+        }
+
         public static IEnumerable<T> TakeFrom<T>(this IEnumerable<T> list, int index)
         {
             var reversed = list.Reverse();

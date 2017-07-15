@@ -17,6 +17,11 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
             return string.Format("Delete from {0}", tableName);
         }
 
+        public string CreateDelete(string tableName, Day day)
+        {
+            return string.Format("Delete from {0} where datum = {1}", tableName, day.Datum);
+        }
+
         public string Create(string tableName, FiveMinutes fiveMinutes)
         {
             var builder = new StringBuilder();

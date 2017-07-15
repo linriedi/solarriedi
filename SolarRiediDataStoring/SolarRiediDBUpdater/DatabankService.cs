@@ -5,9 +5,7 @@ using Linus.SolarRiedi.Settings.Contracts;
 using Linus.SolarRiedi.SolarRiediDBUpdater.Contracs;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Linus.SolarRiedi.SolarRiediDBUpdater
 {
@@ -56,16 +54,19 @@ namespace Linus.SolarRiedi.SolarRiediDBUpdater
                 .azureStorage
                 .GetAllFiles("mesiraziun", filePrefix)
                 .Single();
-
-            var deleteSqlCommand = new SqlCreator().CreateDelete(tableName);
-            this.dbConnection.RunSqlCommand(deleteSqlCommand, this.settingsProvider.GetDbConnectionString());
-
+                      
             var text = this.azureStorage.GetCsvAsString(fileName);
             var entries = this.dataTableCreator.CreateDaysEntry(text);
 
-            foreach(var day in entries)
+            var lastEntries = entries
+                .OrderBy(d => d.Datum)
+                .LastSeven();
+
+            foreach(var day in lastEntries)
             {
                 Console.WriteLine("Start insert day info {0}", day.Datum);
+                var deleteSqlCommand = new SqlCreator().CreateDelete(tableName, day);
+                this.dbConnection.RunSqlCommand(deleteSqlCommand, this.settingsProvider.GetDbConnectionString());
                 var sqlCommand = new SqlCreator().Create(tableName, day);
                 this.dbConnection.RunSqlCommand(sqlCommand, this.settingsProvider.GetDbConnectionString());
                 Console.WriteLine("Finish insert day info {0}", day.Datum);
